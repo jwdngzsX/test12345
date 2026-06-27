@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家伟说电脑资源下载站 | jwdngzsxt1.mysxl.cn</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #1e293b;
+            --text-secondary: #64748b;
+            --text-light: #94a3b8;
+            --border: #e2e8f0;
+            --shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding-bottom: 60px;
+        }
+
+        /* 顶部导航栏 */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* 顶部横幅 */
+        .hero {
+            background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
+            padding: 80px 24px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        /* 主体容器 */
+        .container {
+            max-width: 1200px;
+            margin: -40px auto 0;
+            padding: 0 24px;
+        }
+
+        /* 卡片通用样式 */
+        .card {
+            background: var(--card);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 32px 36px;
+            margin-bottom: 24px;
+            transition: box-shadow 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text);
+            margin: 28px 0 10px;
+        }
+
+        .update-date {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 14px;
+        }
+
+        /* 公告提示框 */
+        .notice-box {
+            background: #f1f5f9;
+            border-left: 3px solid var(--primary);
+            padding: 12px 18px;
+            border-radius: 6px;
+            margin: 14px 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        /* 资源列表 */
+        .resource-item {
+            padding: 10px 0;
+            border-bottom: 1px dashed #f1f5f9;
+            font-size: 15px;
+        }
+
+        .resource-item:last-child {
+            border-bottom: none;
+        }
+
+        .download-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .download-link:hover {
+            color: var(--primary-light);
+            text-decoration: underline;
+        }
+
+        .remark {
+            color: var(--text-light);
+            font-size: 13px;
+            margin-left: 6px;
+        }
+
+        .version {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-top: 8px;
+        }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 13px;
+            margin-top: 50px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 26px;
+            }
+            .card {
+                padding: 22px 20px;
+            }
+            .card h2 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 顶部导航 -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">家伟说电脑资源下载站</div>
+    </div>
+</nav>
+
+<!-- 顶部横幅 -->
+<section class="hero">
+    <h1>家伟说电脑资源下载站</h1>
+    <p>系统镜像 · 原厂OEM · 实用工具 · 美化资源 一站式下载</p>
+</section>
+
+<!-- 主体内容 -->
+<div class="container">
+
+    <!-- 更新日志 -->
+    <div class="card" id="log">
+        <h2>家伟说电脑资源下载站更新日志</h2>
+        <div class="update-date">2026年6月27日更新</div>
+        <p>官网更新日志如下：</p>
+        <p>①优化本网站的布局</p>
+        <p>②UI的全新优化体验</p>
+        <p>③修复部分链接无法访问以及错误的问题</p>
+        <p>④修复部分文字出现的已知问题</p>
+        <p>⑤优化部分资源和文字错误</p>
+        <p class="version">（版本号：version 9.154.7382）</p>
+    </div>
+
+    <!-- 站点公告 -->
+    <div class="card" id="notice">
+        <h2>家伟说电脑资源下载站公告</h2>
+        <div class="update-date">2025年12月17日发布</div>
+
+        <div class="notice-box">
+            注意阅读以下公告！！！
+        </div>
+
+        <h3>家伟说电脑资源下载站最新公告</h3>
+        <p>（一）、如果<strong>未经过本人同意私自盗用本站资源的，将会在家伟说电脑官网进行严厉的处罚</strong></p>
+        <p>（二）、<strong>本网站只提供资源下载</strong> ，详细请前往家伟说电脑官网</p>
+        <p>（三）、其他公告请前往家伟说电脑官网查看详情</p>
+        <p>（四）、<strong>请认真遵守本站规则</strong></p>
+        <p>（五）、<strong>本网站已开通微信公众号跳转，如果不知道官网，请点击联系我们旁边的微信图标即可</strong></p>
+
+        <div class="notice-box" style="margin-top:22px">
+            请注意阅读以下注意事项！！！
+        </div>
+        <p>（一）、如果<strong>本网站资源你没找到</strong> ，<strong>请前往家伟说电脑官网查找</strong></p>
+        <p>（二）、<strong>下载文本已用颜色区分[蓝色]</strong> ，点击颜色字体即可下载，<strong>本站不采用提取码方式分享，但部分资源可能需要采取提取码的方式</strong></p>
+    </div>
+
+    <!-- 全部资源下载 -->
+    <div class="card">
+        <h2>资源下载</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 14px;">点击颜色文字即可下载，请注意！！！</p>
+
+        <!-- 1. 跳过联网激活脚本 -->
+        <h3>Windows11跳过联网激活脚本</h3>
+        <div class="update-date">2025年5月17日更新</div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-q4tCh?notoken=1" class="download-link">跳过联网激活脚本</a>
+        </div>
+
+        <!-- 2. APP类 -->
+        <h3>家伟说电脑官网APP类</h3>
+        <div class="update-date">2025年12月16日更新</div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-FbzCh?notoken=1" class="download-link">家伟说电脑官网APP</a>
+            <span class="remark">【版本号 21.6025.91324】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-YbzCh?notoken=1" class="download-link">家伟说电脑资源下载站官网APP</a>
+            <span class="remark">【版本号 23.6072.37842】</span>
+        </div>
+
+        <!-- 3. 原版系统镜像 -->
+        <h3>Windows原版系统镜像类</h3>
+        <div class="update-date">2025年10月26日更新</div>
+        <div class="resource-item">
+            <a href="https://www.microsoft.com/zh-cn/software-download/windows11" class="download-link">Windows11原版系统下载</a>
+            <span class="remark">【官网跳转】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://next.itellyou.cn/" class="download-link">MSDN我告诉你-做一个安静的工具站（新）</a>
+            <span class="remark">【官网跳转】</span>
+        </div>
+
+        <!-- 4. 教师专用系统 -->
+        <h3>自制教师专用系统类</h3>
+        <div class="update-date">2024年2月7日更新</div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-DceCh?notoken=1" class="download-link">自制SEEWO Windows系统</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-rceCh?notoken=1" class="download-link">自制HiteVision Windows系统</a>
+        </div>
+
+        <!-- 5. 精简系统 -->
+        <h3>自制精简系统类</h3>
+        <div class="update-date">2024年1月28日更新</div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-8ceCh?notoken=1" class="download-link">自制AltasOS精简版系统</a>
+        </div>
+
+        <!-- 6. OEM原厂系统 -->
+        <h3 id="oem">各大品牌OEM原厂系统类</h3>
+        <div class="update-date">2026年3月31日更新</div>
+        
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-TceCh?notoken=1" class="download-link">华硕灵耀14 OEM原厂系统</a>
+            <span class="remark">【型号：UX3405CA.24H2-专业版】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-dceCh?notoken=1" class="download-link">华硕天选5 Pro酷睿版OEM原厂系统</a>
+            <span class="remark">【型号：FX607J-Windows11】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-3ceCh?notoken=1" class="download-link">华为MateBook D15 OEM原厂系统</a>
+            <span class="remark">【型号：BoB-WAH9P-i5 10210U MX250 Win11 21H2】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-hceCh?notoken=1" class="download-link">华硕灵耀双屏X OEM原厂系统</a>
+            <span class="remark">【型号：UX4100EG】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-HceCh?notoken=1" class="download-link">微软Microsoft Surface Pro9 OEM原厂系统</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://softwincn.com/gjxz" class="download-link">GPD OEM原厂系统</a>
+            <span class="remark">【官网跳转】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-9ceCh?notoken=1" class="download-link">神州战神Z6 OEM原厂系统</a>
+            <span class="remark">【型号：CT5NA】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-EceCh?notoken=1" class="download-link">七彩虹将星X15 AT OEM原厂系统</a>
+            <span class="remark">【型号：23-H45-NVMe-SL-22H2】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-kceCh?notoken=1" class="download-link">华硕天选3 OEM原厂系统</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-oceCh?notoken=1" class="download-link">华硕天选4 OEM原厂系统</a>
+            <span class="remark">【型号：FX507VV】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-NutCh?notoken=1" class="download-link">微软Microsoft Surface Pro10 OEM原厂系统</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-OutCh?notoken=1" class="download-link">微软Microsoft Surface Pro5 OEM原厂系统</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-4ceCh?notoken=1" class="download-link">华硕天选第一代OEM原厂系统</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-xceCh?notoken=1" class="download-link">小米笔记本OEM原厂系统</a>
+            <span class="remark">【演示机提取-Windows11 Home 23H2】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-pceCh?notoken=1" class="download-link">七彩虹隐星G15 OEM原厂系统</a>
+            <span class="remark">【型号：24-CH-HOME-23H2】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-fceCh?notoken=1" class="download-link">华硕枪神8 OEM原厂系统</a>
+            <span class="remark">【型号：Windows11专业版】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-2ceCh?notoken=1" class="download-link">联想Lenovo ThinkPad X1 Carbon2022 30周年限定版OEM原厂系统</a>
+            <span class="remark">【型号：Windows11 Pro 22H2】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-sceCh?notoken=1" class="download-link">戴尔Alienware外星人OEM原厂系统</a>
+            <span class="remark">【型号：m15R6 win11 21H2】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-WceCh?notoken=1" class="download-link">华为MateBook 14s OEM原厂系统</a>
+            <span class="remark">【型号：2023 HKFG-16-32-xx Windows11】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-CceCh?notoken=1" class="download-link">华为MateBook X Pro OEM原厂系统</a>
+            <span class="remark">【型号：MachD-WFH9A 2021-Windows11】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-NceCh?notoken=1" class="download-link">联想Lenovo 小新Pro 16 OEM原厂系统</a>
+            <span class="remark">【型号：IRH8 (83AQ)-Win11HomeCN】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-OceCh?notoken=1" class="download-link">宏基AN515-57 OEM原厂系统</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-RceCh?notoken=1" class="download-link">七彩虹将星X17 Pro OEM原厂系统</a>
+            <span class="remark">【型号：23-NVMe-SL-22H2】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-1eeCh?notoken=1" class="download-link">七彩虹将星X15 OEM原厂系统</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-lbtCh?notoken=1" class="download-link">华硕天选6Pro酷睿版OEM原厂系统</a>
+            <span class="remark">【型号：FX608LM Windows11 24H2】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-7btCh?notoken=1" class="download-link">华硕天选6Pro锐龙版OEM原厂系统</a>
+            <span class="remark">【型号：FA608FM Windows11 24H2】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-rxiCh?notoken=1" class="download-link">荣耀MagicBook Pro14 2025 OEM原厂系统</a>
+            <span class="remark">【型号： U5 32GB+1T Windows11 24H2】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-TxiCh?notoken=1" class="download-link">华为MateBook 13 OEM原厂系统</a>
+            <span class="remark">【型号：WRTD-WFH9】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-sxiCh?notoken=1" class="download-link">荣耀笔记本 X14 Plus OEM原厂系统</a>
+            <span class="remark">【型号：R7 FMI-721】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-rtiCh?notoken=1" class="download-link">一号本游侠X1 Pro OEM原厂系统</a>
+            <span class="remark">【型号：X1 Pro-AMD-HX370 CPU专用】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-8tiCh?notoken=1" class="download-link">XiaomiNetbookAir13.3 OEM原厂系统</a>
+            <span class="remark">【型号：i5 6200】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-JqiCh?notoken=1" class="download-link">LENGON联想拯救者Y7000P OEM原厂系统</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-ayiCh?notoken=1" class="download-link">XiaomiNetbookAir13.3 OEM原厂系统</a>
+            <span class="remark">【型号：i5 8250＋MX150】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-wozCh?notoken=1" class="download-link">鸿视讯HonVison一体机原厂镜像</a>
+            <span class="remark">【型号：i5 4210M/4200M专用（分区提取）】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-LILCh?notoken=1" class="download-link">dell灵越7570原厂镜像</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-pzLCh?notoken=1" class="download-link">华为MateBook GT 14</a>
+        </div>
+
+        <!-- 7. 自制系统类 -->
+        <h3 id="custom">自制系统类</h3>
+        <div class="update-date">2026年6月24日更新</div>
+        
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-0ceCh?notoken=1" class="download-link">2024新年快乐定制版Windows7</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-KceCh?notoken=1" class="download-link">2024新年烟花彼岸定制版Windows11</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-UceCh?notoken=1" class="download-link">原神Genshin UI11 Pro</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-pOtCh?notoken=1" class="download-link">HX UI11 Pro</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-aOtCh?notoken=1" class="download-link">HX UI11 Ultra</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-IOtCh?notoken=1" class="download-link">JiaWei UI10 SE</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-MOtCh?notoken=1" class="download-link">JiaWei UI10 Pro</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-wOtCh?notoken=1" class="download-link">JiaWei UI10生日特别版</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-7ceCh?notoken=1" class="download-link">XiaoYu OS1.0</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-FOtCh?notoken=1" class="download-link">Jiawei UI11</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-POtCh?notoken=1" class="download-link">JiaWei UI11 Pro</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-GOtCh?notoken=1" class="download-link">JiaWei UI11 Plus</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-XOtCh?notoken=1" class="download-link">JiaWei UI11 Ultra</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-2OtCh?notoken=1" class="download-link">JiaWei UI11 OS Pro Max</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-tceCh?notoken=1" class="download-link">Sharon OS</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-iceCh?notoken=1" class="download-link">Perce OS</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-zceCh?notoken=1" class="download-link">Happy New Year UI 2025</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-o3iCh?notoken=1" class="download-link">JiaWei UI11 Max生日特别版2025</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-9nzCh?notoken=1" class="download-link">JiaWei UI11 Lite2</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-4MLCh?notoken=1" class="download-link">JiaWei UI11 Lite3 Happy New Year Edition 2026</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-h5LCh?notoken=1" class="download-link">JiaWei UI11 Lite4</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-6sZRh?notoken=1" class="download-link">JiaWei UI11 Lite5</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-670Rh?notoken=1" class="download-link">JiaWei UI11 Lite6</a>
+        </div>
+         <div class="resource-item">
+            <a href="替换成你的下载链接" class="download-link">JiaWei UI11 Lite6R生日特别版2026</a>
+            <span class="remark">【暂不提供下载】</span>
+        </div>
+
+        <!-- 8. 系统定制类 -->
+        <h3>Windows系统定制类</h3>
+        <div class="update-date">2025年11月2日更新</div>
+        
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-LceCh?notoken=1" class="download-link">Windows11猫耳娘定制版</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-5ceCh?notoken=1" class="download-link">UEG联合政府550W For Windows10定制版</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-qceCh?notoken=1" class="download-link">HUTAOMU OS6.1</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-BfzCh?notoken=1" class="download-link">Maidows_OS_ver0.3beta</a>
+        </div>
+
+        <!-- 9. 必备工具类 -->
+        <h3 id="tools">Windows必备工具类</h3>
+        <div class="update-date">2026年6月12日更新</div>
+        
+        <div class="resource-item">
+            <a href="https://www.sysceo.com/dc.html" class="download-link">驱动总裁</a>
+            <span class="remark">【官网跳转】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://www.diskgenius.cn/" class="download-link">DiskGenius</a>
+            <span class="remark">【官网跳转】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-6ceCh?notoken=1" class="download-link">Bandzip</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-yceCh?notoken=1" class="download-link">Geek卸载工具</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://otp.landian.vip/zh-cn/#about" class="download-link">Office Tool Plus</a>
+            <span class="remark">【官网跳转】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-VceCh?notoken=1" class="download-link">图吧工具箱2024.7</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-jceCh?notoken=1" class="download-link">图吧工具箱2025.2</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-TeeCh?notoken=1" class="download-link">口袋系统(WinToGo)</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-99YRh?notoken=1" class="download-link">Rufus 4.14.2377版本</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://www.lanzouw.com/i0XQ021gy0aj" class="download-link">微软常用运行库2023.10.04</a>
+            <span class="remark">【提取码：NTFS】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://www.lanzouw.com/iohLI21gwzuh" class="download-link">Dism++</a>
+            <span class="remark">【提取码：NTFS】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-heeCh?notoken=1" class="download-link">Office 2016</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://www.lanzoui.com/b710887" class="download-link">HEU KMS Activator</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-9eeCh?notoken=1" class="download-link">Ultra ISO软碟通</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-1xiCh?notoken=1" class="download-link">IDM下载器激活脚本</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-xxiCh?notoken=1" class="download-link">Windows7补丁工具</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-pxiCh?notoken=1" class="download-link">Windows7性能评分工具</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-UFiCh?notoken=1" class="download-link">图吧工具箱2025.7</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-yRzCh?notoken=1" class="download-link">Windows安全中心卸载工具</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-VRzCh?notoken=1" class="download-link">Windows更新禁用工具</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-MbzCh?notoken=1" class="download-link">HiBitUninstaller_3.2.70卸载工具</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-L9ZOh?notoken=1" class="download-link">图吧工具箱2026.1</a>
+        </div>
+
+        <!-- 10. PE类 -->
+        <h3 id="pe">PE类</h3>
+        <div class="update-date">2025年8月8日更新</div>
+        
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-HeeCh?notoken=1" class="download-link">Ventoy</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-AeeCh?notoken=1" class="download-link">微PE工具箱</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-EeeCh?notoken=1" class="download-link">FirPE</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-keeCh?notoken=1" class="download-link">优启通PE</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-fxiCh?notoken=1" class="download-link">Hot PE</a>
+        </div>
+
+        <!-- 11. 精简优化工具 -->
+        <h3>Windows精简优化工具类</h3>
+        <div class="update-date">2025年11月18日更新</div>
+        
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-RpzCh?notoken=1" class="download-link">Altas修改工具 2024版本</a>
+            <span class="remark">【版本号：0.3.2】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://wwpl.lanzouw.com/ibYmc2p8rk1e" class="download-link">Altas修改工具 2025版本</a>
+            <span class="remark">【提取码：NTFS】【版本号：0.4.1】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-DpzCh?notoken=1" class="download-link">Altas修改工具 2025版本</a>
+            <span class="remark">【版本号：0.5.0】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://www.lanzouw.com/iyOME21gxwuf" class="download-link">BoosterX优化工具 2024版本</a>
+            <span class="remark">【提取码：NTFS】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-yYeCh?notoken=1" class="download-link">BoosterX优化工具 2025版本</a>
+            <span class="remark">【提取码：NTFS】</span>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-AnzCh?notoken=1" class="download-link">ZyperWin＋＋</a>
+            <span class="remark">【版本号：3.11】</span>
+       </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-265Oh?notoken=1" class="download-link">ZyperWin＋＋</a>
+            <span class="remark">【版本号：4.1】</span>
+
+
+        <!-- 12. 软件开发平台 -->
+        <h3>软件开发平台类</h3>
+        <div class="update-date">2025年8月8日更新</div>
+        
+        <div class="resource-item">
+            <a href="https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=community&channel=Release&version=VS2022&source=VSLandingPage&cid=2030:80b381785eb84887a410f591c4e8bf2a" class="download-link">Visual Studio 2022</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://developer.huawei.com/consumer/cn/deveco-studio/" class="download-link">DevEco Studio</a>
+        </div>
+
+        <!-- 13. Windows美化类 -->
+        <h3>Windows美化类</h3>
+        <div class="update-date">2025年7月5日更新</div>
+        
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-xZtCh?notoken=1" class="download-link">天选姬桌宠下载</a>
+        </div>
+        <div class="resource-item">
+            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-peeCh?notoken=1" class="download-link">MyDockFinder</a>
+        </div>
+
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        © 2026 家伟说电脑资源下载站
+    </div>
+
+</div>
+
+</body>
+</html>
