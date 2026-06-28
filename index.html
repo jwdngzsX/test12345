@@ -17,9 +17,36 @@
 
         body {
             font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
-            background: #f5f7fa;
+            /* 全局美化背景：多层渐变+微光光晕+极细网格 */
+            background: 
+                radial-gradient(circle at 15% 8%, rgba(59, 130, 246, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 85% 90%, rgba(139, 92, 246, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.05) 0%, transparent 60%),
+                linear-gradient(135deg, #f0f5ff 0%, #f5f7fa 40%, #faf5ff 100%);
+            background-attachment: fixed;
+            background-size: 100% 100%;
             color: #1e293b;
             line-height: 1.7;
+            position: relative;
+        }
+
+        /* 新增：全局极细网格纹理层，不影响内容交互 */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+            background-size: 28px 28px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* 保证所有内容在背景之上 */
+        .nav, .main, .modal-mask {
+            position: relative;
+            z-index: 1;
         }
 
         /* 顶部导航栏 */
@@ -29,8 +56,9 @@
             left: 0;
             right: 0;
             height: 68px;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
             z-index: 999;
             transition: all 0.3s ease;
@@ -71,7 +99,7 @@
         }
 
         .nav-item:hover {
-            background: #f1f5f9;
+            background: rgba(59, 130, 246, 0.08);
             color: #3b82f6;
         }
 
@@ -111,6 +139,7 @@
             border-radius: 20px;
             color: #fff;
             margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.25);
         }
 
         .banner h1 {
@@ -125,18 +154,21 @@
 
         /* 卡片通用样式 */
         .card {
-            background: #fff;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border-radius: 16px;
             padding: 28px;
             margin-bottom: 24px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-            border: 1px solid #eef2f7;
+            border: 1px solid rgba(255, 255, 255, 0.6);
             transition: all 0.3s ease;
         }
 
         .card:hover {
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1);
             transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.95);
         }
 
         .card-title {
@@ -254,17 +286,20 @@
             margin-bottom: 30px;
         }
         .service-card {
-            background: #fff;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border-radius: 16px;
             padding: 32px 24px;
             text-align: center;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-            border: 1px solid #eef2f7;
+            border: 1px solid rgba(255, 255, 255, 0.6);
             transition: all 0.3s ease;
         }
         .service-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15);
+            background: rgba(255, 255, 255, 0.95);
         }
         .service-icon {
             width: 64px;
@@ -348,7 +383,9 @@
             gap: 14px;
         }
         .res-item {
-            background: #f8fafc;
+            background: rgba(248, 250, 252, 0.8);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             border-radius: 10px;
             padding: 16px;
             border: 1px solid transparent;
@@ -441,8 +478,10 @@
             padding: 32px 20px;
             color: #94a3b8;
             font-size: 14px;
-            border-top: 1px solid #eef2f7;
+            border-top: 1px solid rgba(238, 242, 247, 0.8);
             margin-top: 40px;
+            position: relative;
+            z-index: 1;
         }
 
         /* 移动端适配 */
@@ -624,8 +663,9 @@
 		<li>修复一些此网站遇到的一些已知问题</li>
 		<li>修复此网站访问一片空白的问题</li>
 		<li>修复此网站因渲染bug导致的部分内容显示不完整的问题</li>
+                <li>添加优化了本网站的背景</li>
             </ul>
-            <p style="margin-top: 10px; color: #94a3b8; font-size: 14px;">版本号：version 12.859.7382</p>
+            <p style="margin-top: 10px; color: #94a3b8; font-size: 14px;">版本号：version 12.859.7389</p>
         </div>
     </div>
 
