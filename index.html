@@ -17,12 +17,12 @@
 
         body {
             font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
-            /* 全局美化背景：多层渐变+微光光晕+极细网格 */
+            /* 全局背景：在原风格基础上适当加深，光晕与底色同步增强 */
             background: 
-                radial-gradient(circle at 15% 8%, rgba(59, 130, 246, 0.12) 0%, transparent 45%),
-                radial-gradient(circle at 85% 90%, rgba(139, 92, 246, 0.12) 0%, transparent 45%),
-                radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.05) 0%, transparent 60%),
-                linear-gradient(135deg, #f0f5ff 0%, #f5f7fa 40%, #faf5ff 100%);
+                radial-gradient(circle at 15% 8%, rgba(59, 130, 246, 0.18) 0%, transparent 50%),
+                radial-gradient(circle at 85% 90%, rgba(139, 92, 246, 0.18) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 65%),
+                linear-gradient(135deg, #e8f0ff 0%, #f0f2f7 40%, #f6efff 100%);
             background-attachment: fixed;
             background-size: 100% 100%;
             color: #1e293b;
@@ -30,14 +30,14 @@
             position: relative;
         }
 
-        /* 新增：全局极细网格纹理层，不影响内容交互 */
+        /* 全局网格纹理：同步适当加深 */
         body::before {
             content: "";
             position: fixed;
             inset: 0;
             background-image: 
-                linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+                linear-gradient(rgba(59, 130, 246, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.06) 1px, transparent 1px);
             background-size: 28px 28px;
             pointer-events: none;
             z-index: 0;
@@ -484,17 +484,147 @@
             z-index: 1;
         }
 
-        /* 移动端适配 */
-        @media (max-width: 768px) {
+        /* 平板端适配 */
+        @media (max-width: 1024px) {
+            .nav-inner {
+                padding: 0 16px;
+            }
             .nav-item {
-                padding: 6px 12px;
-                font-size: 13px;
+                padding: 7px 14px;
+                font-size: 14px;
+            }
+            .banner {
+                padding: 50px 24px;
             }
             .banner h1 {
-                font-size: 28px;
+                font-size: 32px;
+            }
+            .banner p {
+                font-size: 16px;
             }
             .card {
+                padding: 24px;
+            }
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .res-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            .info-box {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .modal-box {
+                max-width: 80%;
+                padding: 28px;
+            }
+            .partner-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* 手机端适配 */
+        @media (max-width: 768px) {
+            .nav {
+                height: 60px;
+            }
+            .nav-inner {
+                padding: 0 12px;
+            }
+            .logo {
+                font-size: 18px;
+            }
+            .nav-menu {
+                gap: 2px;
+            }
+            .nav-item {
+                padding: 6px 8px;
+                font-size: 12px;
+            }
+            .main {
+                padding-top: 72px;
+            }
+            .page {
+                padding: 16px 12px 60px;
+            }
+            .banner {
+                padding: 40px 20px;
+                border-radius: 14px;
+            }
+            .banner h1 {
+                font-size: 24px;
+                margin-bottom: 12px;
+            }
+            .banner p {
+                font-size: 14px;
+            }
+            .card {
+                padding: 18px;
+                border-radius: 12px;
+                margin-bottom: 16px;
+            }
+            .card-title {
+                font-size: 17px;
+                margin-bottom: 14px;
+                flex-wrap: wrap;
+            }
+            .service-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .service-card {
+                padding: 24px 18px;
+            }
+            .res-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .res-item {
+                padding: 14px;
+            }
+            .info-box {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .info-item {
+                padding: 14px;
+            }
+            .info-item .value {
+                font-size: 16px;
+            }
+            .price-table {
+                display: block;
+                overflow-x: auto;
+            }
+            .price-table th,
+            .price-table td {
+                padding: 10px 12px;
+                font-size: 14px;
+                white-space: nowrap;
+            }
+            .partner-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .modal-box {
+                width: 95%;
+                max-width: none;
                 padding: 20px;
+                max-height: 85vh;
+            }
+            .modal-head h2 {
+                font-size: 18px;
+            }
+            .list li {
+                padding: 8px 0 8px 20px;
+                font-size: 14px;
+            }
+            .tip-box {
+                padding: 12px 14px;
+                font-size: 14px;
+            }
+            footer {
+                padding: 24px 16px;
+                font-size: 13px;
             }
         }
     </style>
@@ -519,7 +649,7 @@
 <div class="modal-mask" id="noticeModal">
     <div class="modal-box">
         <div class="modal-head">
-            <h2>📢 最新公告（2026年6月30日）</h2>
+            <h2>📢 最新公告（2026年7月6日）</h2>
             <button class="close-btn" onclick="closeNotice()">×</button>
         </div>
         <ul class="list">
@@ -529,6 +659,7 @@
             <li>即日起快手账号恢复更新，以电脑开箱视频＋vlog混合为主，原名家伟说电脑保持不变；发现冒充等违规行为，违者重罚</li>
             <li>即日起将会下架123云盘下载脚本</li>
             <li>请按照家伟说电脑处罚条例如实遵守，违规将按条例进行适当处罚</li>
+            <li>本次网站运行采用1+1+1运行模式。什么是1+1+1运行模式？1+1+1运行模式是指上线了网站两个（一个主网站jwdngzs.mysxl.cn）＋一个资源下载站jwdngzsxt1.mysxl.cn）和AI＋GitHub模式的网站，采取这种方式考虑做到及时更新，供大家下载，目前试运行中，欢迎大家浏览</li>
         </ul>
     </div>
 </div>
@@ -547,7 +678,7 @@
         <div class="card">
             <div class="card-title">
                 最新公告
-                <span class="tag tag-blue">2026年6月30日</span>
+                <span class="tag tag-blue">2026年7月6日</span>
             </div>
             <ul class="list">
                 <li>校考已结束，在线时间：4月5日~9月5日，9月10日~11日开学</li>
@@ -556,6 +687,7 @@
                 <li>快手账号恢复更新：电脑开箱视频 + vlog混合内容，原名不变</li>
                 <li>即日起下架123云盘下载脚本</li>
                 <li>请遵守处罚条例，违规将按规定处理</li>
+	<li>本网站采用1+1+1运行模式</li>
             </ul>
             <div style="margin-top: 16px;">
                 <button onclick="openNotice()" style="padding: 10px 22px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
@@ -620,8 +752,9 @@
                     <li>禁止进入群聊</li>
                     <li>曝光聊天记录（保存期限227天）</li>
                 </ul>           
-              <div class="tip-box tip-red">
-                </div>
+            </div>
+
+	  <div class="tip-box tip-red" style="margin-top: 16px;">
                  <p style="font-weight: 600; margin-bottom: 8px;">证据如下：</p>
                 <ul class="list">
                     <li>聊天记录证据：https://www.123865.com/s/fIqqVv-HYLCh</li>
@@ -652,13 +785,14 @@
         <div class="card">
             <div class="card-title">
                 更新日志
-                <span class="tag tag-blue">2026年6月30日</span>
+                <span class="tag tag-blue">2026年7月6日</span>
             </div>
             <ul class="list">
-                <li>修复资源下载文字错误的问题</li>
-		<li>优化一些本网站的已知问题</li>
+                <li>优化本网站背景颜色</li>
+	<li>本网站UI适配电脑端、手机端、平板端</li>
+	<li>优化通报UI布局</li>
             </ul>
-            <p style="margin-top: 10px; color: #94a3b8; font-size: 14px;">版本号：version 12.859.7392</p>
+            <p style="margin-top: 10px; color: #94a3b8; font-size: 14px;">版本号：version 12.859.7397</p>
         </div>
     </div>
 
@@ -709,6 +843,61 @@
                 <div class="info-item">
                     <div class="label">服务团队</div>
                     <div class="value">专业团队</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第3页：我们的服务 -->
+    <div class="page" id="service">
+        <div class="banner">
+            <h1>我们的服务</h1>
+            <p>保持您的电脑不会再出问题</p>
+        </div>
+
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="service-icon">⚙️</div>
+                <h3>系统安装</h3>
+                <p>专业的系统重装服务和原厂系统重装服务</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔍</div>
+                <h3>设备检查</h3>
+                <p>对电脑设备进行全面检查，及早发现问题，防止潜在故障</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💬</div>
+                <h3>疑难解答</h3>
+                <p>随时回复客户疑问，快速解决各类电脑问题</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">我的账号</div>
+            <div class="tip-box tip-red">
+                仅在快手/抖音/哔哩哔哩/小红书平台活跃，其他平台出现的「家伟说电脑」一律为冒充，请认准官方账号！
+            </div>
+
+            <div style="margin-top: 20px;">
+                <div class="platform-card">
+                    <div class="platform-name">🎵 抖音端</div>
+                    <p>主要发布系统开箱、电脑系统测试、病毒测试等内容。精通电脑系统与配置升级，有任何电脑问题均可私信联系。复制下列链接即可进入主页</p>
+                    <p>https://www.douyin.com/user/MS4wLjABAAAADIPvv16WGahRIV47tROT9-X8ooiHgbp77TTHJBifDYQ</p>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-name">🎬 快手端</div>
+                    <p>以日常vlog为主，偶尔发布电脑开箱视频。复制下列链接即可进入主页</p>
+                    <p>https://www.kuaishou.com/profile/3x6izuivk43i5qe</p>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-name">📺 哔哩哔哩端</div>
+                    <p>爱搞电脑的家伟说电脑，复制下列链接即可进入主页</p>
+                    <p>https://space.bilibili.com/1367530151/upload/video</p>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-name">📕 小红书端</div>
+                    <p>暂不支持主页展示</p>
                 </div>
             </div>
         </div>
