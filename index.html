@@ -72,6 +72,30 @@
             justify-content: space-between;
         }
  
+        /* ========== Logo区域（头像 + 文字） ========== */
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+ 
+        .logo-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex-shrink: 0;
+        }
+ 
+        .logo-avatar:hover {
+            transform: scale(1.08);
+            box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4);
+        }
+ 
         .logo {
             font-size: 22px;
             font-weight: 700;
@@ -156,6 +180,27 @@
         .banner p {
             font-size: 18px;
             opacity: 0.92;
+        }
+ 
+        /* ========== 关于我们页面头像 ========== */
+        .about-avatar-wrap {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+ 
+        .about-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.35);
+            transition: transform 0.3s ease;
+        }
+ 
+        .about-avatar:hover {
+            transform: scale(1.05);
         }
  
         .card {
@@ -657,6 +702,7 @@
             z-index: 1;
         }
  
+        /* ========== 响应式：头像适配 ========== */
         @media (max-width: 1024px) {
             .nav-inner {
                 padding: 0 14px;
@@ -664,6 +710,17 @@
             .nav-item {
                 padding: 7px 11px;
                 font-size: 13px;
+            }
+            .logo-avatar {
+                width: 34px;
+                height: 34px;
+            }
+            .logo {
+                font-size: 18px;
+            }
+            .about-avatar {
+                width: 80px;
+                height: 80px;
             }
             .banner {
                 padding: 50px 24px;
@@ -717,8 +774,15 @@
                 flex-wrap: wrap;
                 gap: 6px;
             }
+            .logo-area {
+                gap: 8px;
+            }
+            .logo-avatar {
+                width: 30px;
+                height: 30px;
+            }
             .logo {
-                font-size: 17px;
+                font-size: 16px;
             }
             .nav-menu {
                 gap: 2px;
@@ -734,6 +798,10 @@
             }
             .page {
                 padding: 14px 10px 50px;
+            }
+            .about-avatar {
+                width: 70px;
+                height: 70px;
             }
             .banner {
                 padding: 36px 18px;
@@ -859,8 +927,12 @@
                 padding: 5px 7px;
                 font-size: 10px;
             }
+            .logo-avatar {
+                width: 26px;
+                height: 26px;
+            }
             .logo {
-                font-size: 15px;
+                font-size: 14px;
             }
             .banner h1 {
                 font-size: 19px;
@@ -876,7 +948,16 @@
     <!-- 顶部导航 -->
     <div class="nav">
         <div class="nav-inner">
-            <div class="logo">家伟说电脑</div>
+            <!-- ★★★ Logo区域：头像 + 文字 ★★★ -->
+            <div class="logo-area">
+                <img 
+                    src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEY0jNqdxYLq2zbblnn8gNFiUCagY6OcQACmCgAAvmbuFedYRcafdebWj0E.jpg"  
+                    alt="家伟说电脑头像" 
+                    class="logo-avatar"
+                    loading="eager"
+                >
+                <span class="logo">家伟说电脑</span>
+            </div>
             <ul class="nav-menu">
                 <li class="nav-item active" data-page="home">首页</li>
                 <li class="nav-item" data-page="about">我们提供什么</li>
@@ -1029,13 +1110,14 @@
             <div class="card">
                 <div class="card-title">
                     更新日志 
-                    <span class="tag tag-blue">2026年8月1日</span>
+                    <span class="tag tag-blue">2026年8月9日</span>
                 </div>
                 <ul class="list">
-                    <li>修复一些已知问题</li>
-                    <li>新增综合入口</li>
+                    <li>修复资源下载的一些已知问题</li>
+		    <li>新增网站头像</li>
+                    <li>优化网站底部文字</li>
                 </ul>
-                <p style="margin-top: 10px; color: #94a3b8; font-size: 14px;">版本号：version 12.859.7408</p>
+                <p style="margin-top: 10px; color: #94a3b8; font-size: 14px;">版本号：version 12.859.7413</p>
             </div>
         </div>
  
@@ -1285,7 +1367,7 @@
                     <div class="res-grid">
                         <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-LceCh?notoken=1"   target="_blank">Win11猫耳娘定制版</a><div class="res-desc">二次元主题定制</div></div>
                         <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-5ceCh?notoken=1"   target="_blank">UEG联合政府550W定制版</a><div class="res-desc">流浪地球主题 | Win10</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-qceCh?notoken=1"   target="_blank">HUTAOMU OS6.1</a><div class="res-desc">胡桃木题定制系统</div></div>
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-qceCh?notoken=1"   target="_blank">HUTAOMU OS6.1</a><div class="res-desc">胡桃木主题定制系统</div></div>
                         <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-afzCh"   target="_blank">Maidows_OS_ver0.3beta</a><div class="res-desc">定制版</div></div>
                     </div>
                 </div>
@@ -1425,7 +1507,8 @@
                 <div class="card-title">服务支持伙伴</div>
                 <p style="color: #64748b; margin-bottom: 8px;">如果我不在线，可联系以下伙伴为您提供服务与支持：</p>
                 <div class="partner-grid">
-                    <div class="res-item"><a href="https://ahong.mysxl.cn/"   target="_blank">阿宏搞数码</a></div>
+                    <div class="res-item"><a href="https://ahong.mysxl.cn/"   target="_blank">阿宏搞数码（旧）</a></div>
+		    <div class="res-item"><a href="https://ahong.wiki/"   target="_blank">阿宏搞数码（新）</a></div>
                     <div class="res-item"><a href="https://matonggaishuodiannao.mysxl.cn/"   target="_blank">马桶盖说电脑</a></div>
                     <div class="res-item"><a href="https://cljxsymy.mysxl.cn/">  除了镜像啥也没有</a></div>
                     <div class="res-item"><a href="https://aztdndxg.mysxl.cn/"   target="_blank">爱折腾电脑的小刚</a></div>
@@ -1532,9 +1615,10 @@
  
         </div>
  
-        <footer>
-            © 2026 家伟说电脑 版权所有 
-        </footer>
+     <footer>
+    © 2026 家伟说电脑 版权所有<br>
+    Powered by © 家伟说电脑-Artificial Intelligence 😁耶～GitHub.com 
+	</footer>
     </div>
  
     <script>
