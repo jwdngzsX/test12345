@@ -1,1704 +1,1393 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>家伟说电脑 - 官方网站</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<!DOCTYPE html> 
+<html lang="zh-CN"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>家伟说电脑 - 官方网站</title> 
+    <style> 
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        } 
  
-        html {
-            scroll-behavior: smooth;
-        }
+        html { 
+            scroll-behavior: smooth; 
+        } 
  
-        body {
-            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
-            background:
-                radial-gradient(circle at 15% 8%, rgba(59, 130, 246, 0.18) 0%, transparent 50%),
-                radial-gradient(circle at 85% 90%, rgba(139, 92, 246, 0.18) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 65%),
-                linear-gradient(135deg, #e8f0ff 0%, #f0f2f7 40%, #f6efff 100%);
-            background-attachment: fixed;
-            background-size: 100% 100%;
-            color: #1e293b;
-            line-height: 1.7;
-            position: relative;
-        }
+        body { 
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif; 
+            background: 
+                radial-gradient(circle at 15% 8%, rgba(59, 130, 246, 0.18) 0%, transparent 50%), 
+                radial-gradient(circle at 85% 90%, rgba(139, 92, 246, 0.18) 0%, transparent 50%), 
+                radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 65%), 
+                linear-gradient(135deg, #e8f0ff 0%, #f0f2f7 40%, #f6efff 100%); 
+            background-attachment: fixed; 
+            background-size: 100% 100%; 
+            color: #1e293b; 
+            line-height: 1.7; 
+            position: relative; 
+        } 
  
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(59, 130, 246, 0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59, 130, 246, 0.06) 1px, transparent 1px);
-            background-size: 28px 28px;
-            pointer-events: none;
-            z-index: 0;
-        }
+        body::before { 
+            content: ""; 
+            position: fixed; 
+            inset: 0; 
+            background-image: 
+                linear-gradient(rgba(59, 130, 246, 0.06) 1px, transparent 1px), 
+                linear-gradient(90deg, rgba(59, 130, 246, 0.06) 1px, transparent 1px); 
+            background-size: 28px 28px; 
+            pointer-events: none; 
+            z-index: 0; 
+        } 
  
-        .nav,
-        .main,
-        .modal-mask {
-            position: relative;
-            z-index: 1;
-        }
+        .nav, 
+        .main, 
+        .modal-mask { 
+            position: relative; 
+            z-index: 1; 
+        } 
  
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 68px;
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-            z-index: 999;
-            transition: all 0.3s ease;
-        }
+        .nav { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            height: 68px; 
+            background: rgba(255, 255, 255, 0.75); 
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px); 
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06); 
+            z-index: 999; 
+            transition: all 0.3s ease; 
+        } 
  
-        .nav-inner {
-            max-width: 1300px;
-            margin: 0 auto;
-            height: 100%;
-            padding: 0 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+        .nav-inner { 
+            max-width: 1300px; 
+            margin: 0 auto; 
+            height: 100%; 
+            padding: 0 24px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+        } 
  
-        /* ========== Logo区域（头像 + 文字） ========== */
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-shrink: 0;
-        }
+        /* ========== Logo区域（头像 + 文字） ========== */ 
+        .logo-area { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            flex-shrink: 0; 
+        } 
  
-        .logo-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #fff;
-            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            flex-shrink: 0;
-        }
+        .logo-avatar { 
+            width: 40px; 
+            height: 40px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 2px solid #fff; 
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            flex-shrink: 0; 
+        } 
  
-        .logo-avatar:hover {
-            transform: scale(1.08);
-            box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4);
-        }
+        .logo-avatar:hover { 
+            transform: scale(1.08); 
+            box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4); 
+        } 
  
-        .logo {
-            font-size: 22px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            white-space: nowrap;
-        }
+        .logo { 
+            font-size: 22px; 
+            font-weight: 700; 
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            background-clip: text; 
+            white-space: nowrap; 
+        } 
  
-        .nav-menu {
-            display: flex;
-            gap: 4px;
-            list-style: none;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-        }
+        .nav-menu { 
+            display: flex; 
+            gap: 4px; 
+            list-style: none; 
+            flex-wrap: wrap; 
+            justify-content: flex-end; 
+        } 
  
-        .nav-item {
-            padding: 8px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            color: #64748b;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
+        .nav-item { 
+            padding: 8px 16px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-size: 14px; 
+            color: #64748b; 
+            transition: all 0.3s ease; 
+            white-space: nowrap; 
+        } 
  
-        .nav-item:hover {
-            background: rgba(59, 130, 246, 0.08);
-            color: #3b82f6;
-        }
+        .nav-item:hover { 
+            background: rgba(59, 130, 246, 0.08); 
+            color: #3b82f6; 
+        } 
  
-        .nav-item.active {
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            color: #fff;
-        }
+        .nav-item.active { 
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6); 
+            color: #fff; 
+        } 
  
-        .main {
-            padding-top: 88px;
-            min-height: 100vh;
-        }
+        .main { 
+            padding-top: 88px; 
+            min-height: 100vh; 
+        } 
  
-        .page {
-            display: none;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px 24px 80px;
-            animation: fadeUp 0.5s ease;
-        }
+        .page { 
+            display: none; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 20px 24px 80px; 
+            animation: fadeUp 0.5s ease; 
+        } 
  
-        .page.active {
-            display: block;
-        }
+        .page.active { 
+            display: block; 
+        } 
  
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(24px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        @keyframes fadeUp { 
+            from { 
+                opacity: 0; 
+                transform: translateY(24px); 
+            } 
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            } 
+        } 
  
-        .banner {
-            text-align: center;
-            padding: 70px 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
-            color: #fff;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.25);
-        }
+        .banner { 
+            text-align: center; 
+            padding: 70px 30px; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            border-radius: 20px; 
+            color: #fff; 
+            margin-bottom: 30px; 
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.25); 
+        } 
  
-        .banner h1 {
-            font-size: 38px;
-            margin-bottom: 16px;
-        }
+        .banner h1 { 
+            font-size: 38px; 
+            margin-bottom: 16px; 
+        } 
  
-        .banner p {
-            font-size: 18px;
-            opacity: 0.92;
-        }
+        .banner p { 
+            font-size: 18px; 
+            opacity: 0.92; 
+        } 
  
-        /* ========== 关于我们页面头像 ========== */
-        .about-avatar-wrap {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
+        /* ========== 关于我们页面头像 ========== */ 
+        .about-avatar-wrap { 
+            display: flex; 
+            justify-content: center; 
+            margin-bottom: 20px; 
+        } 
  
-        .about-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #fff;
-            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.35);
-            transition: transform 0.3s ease;
-        }
+        .about-avatar { 
+            width: 100px; 
+            height: 100px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 3px solid #fff; 
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.35); 
+            transition: transform 0.3s ease; 
+        } 
  
-        .about-avatar:hover {
-            transform: scale(1.05);
-        }
+        .about-avatar:hover { 
+            transform: scale(1.05); 
+        } 
  
-        .card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-radius: 16px;
-            padding: 28px;
-            margin-bottom: 24px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            transition: all 0.3s ease;
-        }
+        .card { 
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(8px); 
+            -webkit-backdrop-filter: blur(8px); 
+            border-radius: 16px; 
+            padding: 28px; 
+            margin-bottom: 24px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); 
+            border: 1px solid rgba(255, 255, 255, 0.6); 
+            transition: all 0.3s ease; 
+        } 
  
-        .card:hover {
-            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1);
-            transform: translateY(-3px);
-            background: rgba(255, 255, 255, 0.95);
-        }
+        .card:hover { 
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1); 
+            transform: translateY(-3px); 
+            background: rgba(255, 255, 255, 0.95); 
+        } 
  
-        .card-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 18px;
-            color: #0f172a;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .card-title { 
+            font-size: 20px; 
+            font-weight: 700; 
+            margin-bottom: 18px; 
+            color: #0f172a; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+        } 
  
-        .card-title::before {
-            content: "";
-            width: 4px;
-            height: 22px;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            border-radius: 3px;
-            flex-shrink: 0;
-        }
+        .card-title::before { 
+            content: ""; 
+            width: 4px; 
+            height: 22px; 
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6); 
+            border-radius: 3px; 
+            flex-shrink: 0; 
+        } 
  
-        .tag {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
-            margin-left: 8px;
-            white-space: nowrap;
-        }
-        .tag-blue {
-            background: #dbeafe;
-            color: #1d4ed8;
-        }
-        .tag-orange {
-            background: #fef3c7;
-            color: #b45309;
-        }
-        .tag-red {
-            background: #fee2e2;
-            color: #b91c1c;
-        }
-        .tag-green {
-            background: #d1fae5;
-            color: #065f46;
-        }
-        .tag-purple {
-            background: #ede9fe;
-            color: #5b21b6;
-        }
+        .tag { 
+            display: inline-block; 
+            padding: 3px 10px; 
+            border-radius: 20px; 
+            font-size: 12px; 
+            font-weight: 500; 
+            margin-left: 8px; 
+            white-space: nowrap; 
+        } 
+        .tag-blue { 
+            background: #dbeafe; 
+            color: #1d4ed8; 
+        } 
+        .tag-orange { 
+            background: #fef3c7; 
+            color: #b45309; 
+        } 
+        .tag-red { 
+            background: #fee2e2; 
+            color: #b91c1c; 
+        } 
+        .tag-green { 
+            background: #d1fae5; 
+            color: #065f46; 
+        } 
+        .tag-purple { 
+            background: #ede9fe; 
+            color: #5b21b6; 
+        } 
  
-        .list {
-            list-style: none;
-        }
-        .list li {
-            padding: 10px 0 10px 22px;
-            border-bottom: 1px dashed #e2e8f0;
-            position: relative;
-        }
-        .list li:last-child {
-            border-bottom: none;
-        }
-        .list li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #3b82f6;
-            font-weight: bold;
-            font-size: 18px;
-        }
+        .list { 
+            list-style: none; 
+        } 
+        .list li { 
+            padding: 10px 0 10px 22px; 
+            border-bottom: 1px dashed #e2e8f0; 
+            position: relative; 
+        } 
+        .list li:last-child { 
+            border-bottom: none; 
+        } 
+        .list li::before { 
+            content: "•"; 
+            position: absolute; 
+            left: 0; 
+            color: #3b82f6; 
+            font-weight: bold; 
+            font-size: 18px; 
+        } 
  
-        .modal-mask {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        .modal-mask.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        .modal-box {
-            background: #fff;
-            border-radius: 16px;
-            width: 92%;
-            max-width: 620px;
-            max-height: 82vh;
-            overflow-y: auto;
-            padding: 32px;
-            transform: scale(0.9);
-            transition: all 0.3s ease;
-        }
-        .modal-mask.show .modal-box {
-            transform: scale(1);
-        }
-        .modal-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 16px;
-            margin-bottom: 16px;
-            border-bottom: 1px solid #f1f5f9;
-        }
-        .modal-head h2 {
-            font-size: 20px;
-        }
-        .close-btn {
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            border: none;
-            background: #f1f5f9;
-            cursor: pointer;
-            font-size: 20px;
-            transition: all 0.3s ease;
-        }
-        .close-btn:hover {
-            background: #e2e8f0;
-            transform: rotate(90deg);
-        }
+        .modal-mask { 
+            position: fixed; 
+            inset: 0; 
+            background: rgba(0, 0, 0, 0.5); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            z-index: 2000; 
+            opacity: 0; 
+            visibility: hidden; 
+            transition: all 0.3s ease; 
+        } 
+        .modal-mask.show { 
+            opacity: 1; 
+            visibility: visible; 
+        } 
+        .modal-box { 
+            background: #fff; 
+            border-radius: 16px; 
+            width: 92%; 
+            max-width: 620px; 
+            max-height: 82vh; 
+            overflow-y: auto; 
+            padding: 32px; 
+            transform: scale(0.9); 
+            transition: all 0.3s ease; 
+        } 
+        .modal-mask.show .modal-box { 
+            transform: scale(1); 
+        } 
+        .modal-head { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding-bottom: 16px; 
+            margin-bottom: 16px; 
+            border-bottom: 1px solid #f1f5f9; 
+        } 
+        .modal-head h2 { 
+            font-size: 20px; 
+        } 
+        .close-btn { 
+            width: 34px; 
+            height: 34px; 
+            border-radius: 50%; 
+            border: none; 
+            background: #f1f5f9; 
+            cursor: pointer; 
+            font-size: 20px; 
+            transition: all 0.3s ease; 
+        } 
+        .close-btn:hover { 
+            background: #e2e8f0; 
+            transform: rotate(90deg); 
+        } 
  
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .service-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-radius: 16px;
-            padding: 32px 24px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            transition: all 0.3s ease;
-        }
-        .service-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15);
-            background: rgba(255, 255, 255, 0.95);
-        }
-        .service-icon {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 16px;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 28px;
-        }
-        .service-card h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
-            color: #0f172a;
-        }
-        .service-card p {
-            color: #64748b;
-            font-size: 14px;
-        }
+        .service-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 20px; 
+            margin-bottom: 30px; 
+        } 
+        .service-card { 
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(8px); 
+            -webkit-backdrop-filter: blur(8px); 
+            border-radius: 16px; 
+            padding: 32px 24px; 
+            text-align: center; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); 
+            border: 1px solid rgba(255, 255, 255, 0.6); 
+            transition: all 0.3s ease; 
+        } 
+        .service-card:hover { 
+            transform: translateY(-6px); 
+            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15); 
+            background: rgba(255, 255, 255, 0.95); 
+        } 
+        .service-icon { 
+            width: 64px; 
+            height: 64px; 
+            margin: 0 auto 16px; 
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6); 
+            border-radius: 14px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: #fff; 
+            font-size: 28px; 
+        } 
+        .service-card h3 { 
+            font-size: 18px; 
+            margin-bottom: 10px; 
+            color: #0f172a; 
+        } 
+        .service-card p { 
+            color: #64748b; 
+            font-size: 14px; 
+        } 
  
-        .info-box {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-top: 20px;
-        }
-        .info-item {
-            padding: 18px;
-            background: #f8fafc;
-            border-radius: 12px;
-        }
-        .info-item .label {
-            font-size: 14px;
-            color: #64748b;
-            margin-bottom: 6px;
-        }
-        .info-item .value {
-            font-size: 18px;
-            font-weight: 700;
-            color: #0f172a;
-        }
+        .info-box { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 16px; 
+            margin-top: 20px; 
+        } 
+        .info-item { 
+            padding: 18px; 
+            background: #f8fafc; 
+            border-radius: 12px; 
+        } 
+        .info-item .label { 
+            font-size: 14px; 
+            color: #64748b; 
+            margin-bottom: 6px; 
+        } 
+        .info-item .value { 
+            font-size: 18px; 
+            font-weight: 700; 
+            color: #0f172a; 
+        } 
  
-        .platform-card {
-            background: #f8fafc;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 14px;
-            border-left: 4px solid #3b82f6;
-            transition: all 0.3s ease;
-        }
-        .platform-card:hover {
-            background: #f0f9ff;
-        }
-        .platform-name {
-            font-weight: 700;
-            font-size: 16px;
-            margin-bottom: 8px;
-            color: #0f172a;
-        }
+        .platform-card { 
+            background: #f8fafc; 
+            border-radius: 12px; 
+            padding: 20px; 
+            margin-bottom: 14px; 
+            border-left: 4px solid #3b82f6; 
+            transition: all 0.3s ease; 
+        } 
+        .platform-card:hover { 
+            background: #f0f9ff; 
+        } 
+        .platform-name { 
+            font-weight: 700; 
+            font-size: 16px; 
+            margin-bottom: 8px; 
+            color: #0f172a; 
+        } 
  
-        .res-group {
-            margin-bottom: 40px;
-        }
-        .res-group h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #e2e8f0;
-            color: #0f172a;
-        }
-        .res-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-            gap: 14px;
-        }
-        .res-item {
-            background: rgba(248, 250, 252, 0.8);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border-radius: 10px;
-            padding: 16px;
-            border: 1px solid transparent;
-            transition: all 0.3s ease;
-        }
-        .res-item:hover {
-            background: #fff;
-            border-color: #3b82f6;
-            transform: translateX(4px);
-        }
-        .res-item a {
-            color: #2563eb;
-            text-decoration: none;
-            font-weight: 500;
-            display: block;
-            word-break: break-all;
-        }
-        .res-item a:hover {
-            color: #7c3aed;
-        }
-        .res-desc {
-            font-size: 12px;
-            color: #94a3b8;
-            margin-top: 6px;
-            line-height: 1.5;
-        }
+        .res-group { 
+            margin-bottom: 40px; 
+        } 
+        .res-group h3 { 
+            font-size: 18px; 
+            font-weight: 700; 
+            margin-bottom: 16px; 
+            padding-bottom: 8px; 
+            border-bottom: 2px solid #e2e8f0; 
+            color: #0f172a; 
+        } 
+        .res-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); 
+            gap: 14px; 
+        } 
+        .res-item { 
+            background: rgba(248, 250, 252, 0.8); 
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px); 
+            border-radius: 10px; 
+            padding: 16px; 
+            border: 1px solid transparent; 
+            transition: all 0.3s ease; 
+        } 
+        .res-item:hover { 
+            background: #fff; 
+            border-color: #3b82f6; 
+            transform: translateX(4px); 
+        } 
+        .res-item a { 
+            color: #2563eb; 
+            text-decoration: none; 
+            font-weight: 500; 
+            display: block; 
+            word-break: break-all; 
+        } 
+        .res-item a:hover { 
+            color: #7c3aed; 
+        } 
+        .res-desc { 
+            font-size: 12px; 
+            color: #94a3b8; 
+            margin-top: 6px; 
+            line-height: 1.5; 
+        } 
  
-        .price-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
-        }
-        .price-table th,
-        .price-table td {
-            padding: 12px 16px;
-            text-align: left;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .price-table th {
-            background: #f8fafc;
-            font-weight: 600;
-            color: #475569;
-        }
+        .price-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 16px; 
+        } 
+        .price-table th, 
+        .price-table td { 
+            padding: 12px 16px; 
+            text-align: left; 
+            border-bottom: 1px solid #e2e8f0; 
+        } 
+        .price-table th { 
+            background: #f8fafc; 
+            font-weight: 600; 
+            color: #475569; 
+        } 
  
-        .partner-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 12px;
-            margin-top: 16px;
-        }
-        .partner-item {
-            background: #f8fafc;
-            padding: 14px;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-        .partner-item:hover {
-            background: #e0f2fe;
-            color: #0369a1;
-        }
+        .partner-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+            gap: 12px; 
+            margin-top: 16px; 
+        } 
+        .partner-item { 
+            background: #f8fafc; 
+            padding: 14px; 
+            border-radius: 8px; 
+            text-align: center; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+        } 
+        .partner-item:hover { 
+            background: #e0f2fe; 
+            color: #0369a1; 
+        } 
  
-        .tip-box {
-            padding: 14px 18px;
-            border-radius: 10px;
-            margin-top: 16px;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        .tip-yellow {
-            background: #fefce8;
-            color: #854d0e;
-        }
-        .tip-blue {
-            background: #f0f9ff;
-            color: #075985;
-        }
-        .tip-red {
-            background: #fef2f2;
-            color: #b91c1c;
-        }
+        .tip-box { 
+            padding: 14px 18px; 
+            border-radius: 10px; 
+            margin-top: 16px; 
+            font-size: 14px; 
+            line-height: 1.6; 
+        } 
+        .tip-yellow { 
+            background: #fefce8; 
+            color: #854d0e; 
+        } 
+        .tip-blue { 
+            background: #f0f9ff; 
+            color: #075985; 
+        } 
+        .tip-red { 
+            background: #fef2f2; 
+            color: #b91c1c; 
+        } 
  
-        .portal-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-radius: 16px;
-            padding: 30px 28px;
-            margin-bottom: 28px;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            transition: all 0.3s ease;
-        }
-        .portal-card:hover {
-            box-shadow: 0 10px 36px rgba(59, 130, 246, 0.12);
-            transform: translateY(-2px);
-        }
-        .portal-card-header {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 18px;
-            padding-bottom: 16px;
-            border-bottom: 2px solid #f1f5f9;
-        }
-        .portal-card-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            flex-shrink: 0;
-        }
-        .portal-card-icon.red {
-            background: #fef2f2;
-            color: #dc2626;
-        }
-        .portal-card-icon.blue {
-            background: #eff6ff;
-            color: #2563eb;
-        }
-        .portal-card-icon.orange {
-            background: #fff7ed;
-            color: #ea580c;
-        }
-        .portal-card-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: #0f172a;
-        }
-        .portal-card-subtitle {
-            font-size: 13px;
-            color: #94a3b8;
-            margin-top: 2px;
-        }
-        .portal-link-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 13px 26px;
-            border-radius: 10px;
-            font-size: 15px;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-            letter-spacing: 0.3px;
-            margin: 6px 8px 6px 0;
-        }
-        .portal-link-btn.red-btn {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            color: #fff;
-            box-shadow: 0 4px 16px rgba(220, 38, 38, 0.25);
-        }
-        .portal-link-btn.red-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(220, 38, 38, 0.35);
-        }
-        .portal-link-btn.blue-btn {
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-            color: #fff;
-            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25);
-        }
-        .portal-link-btn.blue-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
-        }
-        .portal-link-btn.pink-btn {
-            background: linear-gradient(135deg, #ec4899, #db2777);
-            color: #fff;
-            box-shadow: 0 4px 16px rgba(219, 39, 119, 0.25);
-        }
-        .portal-link-btn.pink-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(219, 39, 119, 0.35);
-        }
-        .portal-link-btn.orange-btn {
-            background: linear-gradient(135deg, #f97316, #ea580c);
-            color: #fff;
-            box-shadow: 0 4px 16px rgba(234, 88, 12, 0.25);
-        }
-        .portal-link-btn.orange-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(234, 88, 12, 0.35);
-        }
-        .portal-link-btn .arrow-icon {
-            font-size: 18px;
-            transition: transform 0.3s ease;
-        }
-        .portal-link-btn:hover .arrow-icon {
-            transform: translateX(4px);
-        }
-        .portal-btn-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 6px;
-        }
-        .portal-link-hint {
-            display: inline-block;
-            font-size: 11px;
-            color: #94a3b8;
-            margin-left: 4px;
-            font-weight: 400;
-            font-style: italic;
-        }
+        footer { 
+            text-align: center; 
+            padding: 32px 20px; 
+            color: #94a3b8; 
+            font-size: 14px; 
+            border-top: 1px solid rgba(238, 242, 247, 0.8); 
+            margin-top: 40px; 
+            position: relative; 
+            z-index: 1; 
+        } 
  
-        .submit-notice {
-            margin-top: 18px;
-            padding: 16px 20px;
-            background: #f0f9ff;
-            border-radius: 12px;
-            border-left: 4px solid #3b82f6;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            font-size: 14px;
-            color: #1e40af;
-            line-height: 1.7;
-        }
-        .submit-notice .notice-icon {
-            font-size: 20px;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-        .submit-notice .notice-content strong {
-            color: #0f172a;
-        }
-        .submit-notice.warning {
-            background: #fffbeb;
-            border-left-color: #f59e0b;
-            color: #92400e;
-        }
-        .submit-notice.warning .notice-content strong {
-            color: #78350f;
-        }
+        /* ========== 响应式适配 ========== */ 
+        @media (max-width: 1024px) { 
+            .nav-inner { 
+                padding: 0 14px; 
+            } 
+            .nav-item { 
+                padding: 7px 11px; 
+                font-size: 13px; 
+            } 
+            .logo-avatar { 
+                width: 34px; 
+                height: 34px; 
+            } 
+            .logo { 
+                font-size: 18px; 
+            } 
+            .about-avatar { 
+                width: 80px; 
+                height: 80px; 
+            } 
+            .banner { 
+                padding: 50px 24px; 
+            } 
+            .banner h1 { 
+                font-size: 32px; 
+            } 
+            .banner p { 
+                font-size: 16px; 
+            } 
+            .card { 
+                padding: 24px; 
+            } 
+            .service-grid { 
+                grid-template-columns: repeat(2, 1fr); 
+            } 
+            .res-grid { 
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+            } 
+            .info-box { 
+                grid-template-columns: repeat(2, 1fr); 
+            } 
+            .modal-box { 
+                max-width: 80%; 
+                padding: 28px; 
+            } 
+            .partner-grid { 
+                grid-template-columns: repeat(3, 1fr); 
+            } 
+        } 
  
-        footer {
-            text-align: center;
-            padding: 32px 20px;
-            color: #94a3b8;
-            font-size: 14px;
-            border-top: 1px solid rgba(238, 242, 247, 0.8);
-            margin-top: 40px;
-            position: relative;
-            z-index: 1;
-        }
+        @media (max-width: 768px) { 
+            .nav { 
+                height: auto; 
+                min-height: 56px; 
+            } 
+            .nav-inner { 
+                padding: 8px 10px; 
+                flex-wrap: wrap; 
+                gap: 6px; 
+            } 
+            .logo-area { 
+                gap: 8px; 
+            } 
+            .logo-avatar { 
+                width: 30px; 
+                height: 30px; 
+            } 
+            .logo { 
+                font-size: 16px; 
+            } 
+            .nav-menu { 
+                gap: 2px; 
+                flex-wrap: wrap; 
+            } 
+            .nav-item { 
+                padding: 6px 9px; 
+                font-size: 11px; 
+                border-radius: 6px; 
+            } 
+            .main { 
+                padding-top: 100px; 
+            } 
+            .page { 
+                padding: 14px 10px 50px; 
+            } 
+            .about-avatar { 
+                width: 70px; 
+                height: 70px; 
+            } 
+            .banner { 
+                padding: 36px 18px; 
+                border-radius: 14px; 
+            } 
+            .banner h1 { 
+                font-size: 22px; 
+                margin-bottom: 10px; 
+            } 
+            .banner p { 
+                font-size: 13px; 
+            } 
+            .card { 
+                padding: 16px; 
+                border-radius: 12px; 
+                margin-bottom: 14px; 
+            } 
+            .card-title { 
+                font-size: 16px; 
+                margin-bottom: 12px; 
+                flex-wrap: wrap; 
+            } 
+            .service-grid { 
+                grid-template-columns: 1fr; 
+                gap: 14px; 
+            } 
+            .service-card { 
+                padding: 22px 16px; 
+            } 
+            .res-grid { 
+                grid-template-columns: 1fr; 
+                gap: 10px; 
+            } 
+            .res-item { 
+                padding: 12px; 
+            } 
+            .info-box { 
+                grid-template-columns: 1fr 1fr; 
+                gap: 10px; 
+            } 
+            .info-item { 
+                padding: 12px; 
+            } 
+            .info-item .value { 
+                font-size: 15px; 
+            } 
+            .price-table { 
+                display: block; 
+                overflow-x: auto; 
+            } 
+            .price-table th, 
+            .price-table td { 
+                padding: 8px 10px; 
+                font-size: 13px; 
+                white-space: nowrap; 
+            } 
+            .partner-grid { 
+                grid-template-columns: repeat(2, 1fr); 
+            } 
+            .modal-box { 
+                width: 95%; 
+                max-width: none; 
+                padding: 18px; 
+                max-height: 85vh; 
+            } 
+            .modal-head h2 { 
+                font-size: 17px; 
+            } 
+            .list li { 
+                padding: 7px 0 7px 18px; 
+                font-size: 13px; 
+            } 
+            .tip-box { 
+                padding: 10px 12px; 
+                font-size: 13px; 
+            } 
+            footer { 
+                padding: 20px 14px; 
+                font-size: 12px; 
+            } 
+        } 
  
-        /* ========== 响应式：头像适配 ========== */
-        @media (max-width: 1024px) {
-            .nav-inner {
-                padding: 0 14px;
-            }
-            .nav-item {
-                padding: 7px 11px;
-                font-size: 13px;
-            }
-            .logo-avatar {
-                width: 34px;
-                height: 34px;
-            }
-            .logo {
-                font-size: 18px;
-            }
-            .about-avatar {
-                width: 80px;
-                height: 80px;
-            }
-            .banner {
-                padding: 50px 24px;
-            }
-            .banner h1 {
-                font-size: 32px;
-            }
-            .banner p {
-                font-size: 16px;
-            }
-            .card {
-                padding: 24px;
-            }
-            .service-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .res-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            }
-            .info-box {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .modal-box {
-                max-width: 80%;
-                padding: 28px;
-            }
-            .partner-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .portal-btn-row {
-                gap: 8px;
-            }
-            .portal-link-btn {
-                padding: 12px 20px;
-                font-size: 14px;
-            }
-            .submit-notice {
-                padding: 14px 16px;
-                font-size: 13px;
-                gap: 10px;
-            }
-        }
+        @media (max-width: 400px) { 
+            .nav-item { 
+                padding: 5px 7px; 
+                font-size: 10px; 
+            } 
+            .logo-avatar { 
+                width: 26px; 
+                height: 26px; 
+            } 
+            .logo { 
+                font-size: 14px; 
+            } 
+            .banner h1 { 
+                font-size: 19px; 
+            } 
+        } 
+    </style> 
+</head> 
+<body> 
  
-        @media (max-width: 768px) {
-            .nav {
-                height: auto;
-                min-height: 56px;
-            }
-            .nav-inner {
-                padding: 8px 10px;
-                flex-wrap: wrap;
-                gap: 6px;
-            }
-            .logo-area {
-                gap: 8px;
-            }
-            .logo-avatar {
-                width: 30px;
-                height: 30px;
-            }
-            .logo {
-                font-size: 16px;
-            }
-            .nav-menu {
-                gap: 2px;
-                flex-wrap: wrap;
-            }
-            .nav-item {
-                padding: 6px 9px;
-                font-size: 11px;
-                border-radius: 6px;
-            }
-            .main {
-                padding-top: 100px;
-            }
-            .page {
-                padding: 14px 10px 50px;
-            }
-            .about-avatar {
-                width: 70px;
-                height: 70px;
-            }
-            .banner {
-                padding: 36px 18px;
-                border-radius: 14px;
-            }
-            .banner h1 {
-                font-size: 22px;
-                margin-bottom: 10px;
-            }
-            .banner p {
-                font-size: 13px;
-            }
-            .card {
-                padding: 16px;
-                border-radius: 12px;
-                margin-bottom: 14px;
-            }
-            .card-title {
-                font-size: 16px;
-                margin-bottom: 12px;
-                flex-wrap: wrap;
-            }
-            .service-grid {
-                grid-template-columns: 1fr;
-                gap: 14px;
-            }
-            .service-card {
-                padding: 22px 16px;
-            }
-            .res-grid {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-            .res-item {
-                padding: 12px;
-            }
-            .info-box {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-            .info-item {
-                padding: 12px;
-            }
-            .info-item .value {
-                font-size: 15px;
-            }
-            .price-table {
-                display: block;
-                overflow-x: auto;
-            }
-            .price-table th,
-            .price-table td {
-                padding: 8px 10px;
-                font-size: 13px;
-                white-space: nowrap;
-            }
-            .partner-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .modal-box {
-                width: 95%;
-                max-width: none;
-                padding: 18px;
-                max-height: 85vh;
-            }
-            .modal-head h2 {
-                font-size: 17px;
-            }
-            .list li {
-                padding: 7px 0 7px 18px;
-                font-size: 13px;
-            }
-            .tip-box {
-                padding: 10px 12px;
-                font-size: 13px;
-            }
-            .portal-card {
-                padding: 18px 14px;
-                margin-bottom: 18px;
-            }
-            .portal-card-header {
-                gap: 10px;
-                margin-bottom: 14px;
-                padding-bottom: 12px;
-            }
-            .portal-card-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
-                border-radius: 10px;
-            }
-            .portal-card-title {
-                font-size: 17px;
-            }
-            .portal-card-subtitle {
-                font-size: 12px;
-            }
-            .portal-btn-row {
-                flex-direction: column;
-                gap: 8px;
-            }
-            .portal-link-btn {
-                width: 100%;
-                justify-content: center;
-                padding: 13px 18px;
-                font-size: 14px;
-                margin: 4px 0;
-            }
-            .submit-notice {
-                padding: 12px 14px;
-                font-size: 13px;
-                flex-direction: column;
-                gap: 6px;
-            }
-            footer {
-                padding: 20px 14px;
-                font-size: 12px;
-            }
-        }
- 
-        @media (max-width: 400px) {
-            .nav-item {
-                padding: 5px 7px;
-                font-size: 10px;
-            }
-            .logo-avatar {
-                width: 26px;
-                height: 26px;
-            }
-            .logo {
-                font-size: 14px;
-            }
-            .banner h1 {
-                font-size: 19px;
-            }
-            .portal-card-title {
-                font-size: 15px;
-            }
-        }
-    </style>
-</head>
-<body>
- 
-    <!-- 顶部导航 -->
-    <div class="nav">
-        <div class="nav-inner">
-            <!-- ★★★ Logo区域：头像 + 文字 ★★★ -->
-            <div class="logo-area">
+    <!-- 顶部导航 --> 
+    <div class="nav"> 
+        <div class="nav-inner"> 
+            <!-- Logo区域：头像 + 文字 --> 
+            <div class="logo-area"> 
                 <img 
-                    src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEY0jNqdxYLq2zbblnn8gNFiUCagY6OcQACmCgAAvmbuFedYRcafdebWj0E.jpg"   
+                    src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEY0jNqdxYLq2zbblnn8gNFiUCagY6OcQACmCgAAvmbuFedYRcafdebWj0E.jpg"    
                     alt="家伟说电脑头像" 
-                    class="logo-avatar"
-                    loading="eager"
-                >
-                <span class="logo">家伟说电脑</span>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item active" data-page="home">首页</li>
-                <li class="nav-item" data-page="about">我们提供什么</li>
-                <li class="nav-item" data-page="service">我们的服务</li>
-                <li class="nav-item" data-page="resource">资源下载</li>
-                <li class="nav-item" data-page="support">服务与支持</li>
-                <li class="nav-item" data-page="portal">综合入口</li>
-            </ul>
-        </div>
-    </div>
+                    class="logo-avatar" 
+                    loading="eager" 
+                > 
+                <span class="logo">家伟说电脑</span> 
+            </div> 
+            <ul class="nav-menu"> 
+                <li class="nav-item active" data-page="home">首页</li> 
+                <li class="nav-item" data-page="about">我们提供什么</li> 
+                <li class="nav-item" data-page="service">我们的服务</li> 
+                <li class="nav-item" data-page="resource">资源下载</li> 
+                <li class="nav-item" data-page="support">服务与支持</li> 
+            </ul> 
+        </div> 
+    </div> 
  
-    <!-- 公告弹窗 -->
-    <div class="modal-mask" id="noticeModal">
-        <div class="modal-box">
-            <div class="modal-head">
-                <h2>📢 最新公告（2026年7月26日）</h2>
-                <button class="close-btn" onclick="closeNotice()">×</button>
-            </div>
-            <ul class="list">
-                <li>从2026年4月4日起在线，本次校考已结束，在线时间从4月5日~9月5日，9月10日~11日开学</li>
-                <li>本人已建资源下载站，请遵守本站规则！</li>
-                <li>此网站采用AI＋GitHub模式</li>
-                <li>即日起快手账号恢复更新，以电脑开箱视频＋vlog混合为主，原名家伟说电脑保持不变；发现冒充等违规行为，违者重罚</li>
-                <li>即日起将会下架123云盘下载脚本</li>
-                <li>请按照家伟说电脑处罚条例如实遵守，违规将按条例进行适当处罚</li>
-                <li>本次网站运行采用1+1+1运行模式。什么是1+1+1运行模式？1+1+1运行模式是指上线了网站两个（一个主网站jwdngzs.mysxl.cn）＋一个资源下载站jwdngzsxt1.mysxl.cn）和AI＋GitHub模式的网站，采取这种方式考虑做到及时更新，供大家下载，目前试运行中，欢迎大家浏览</li>
-            </ul>
-        </div>
-    </div>
+    <!-- 公告弹窗 --> 
+    <div class="modal-mask" id="noticeModal"> 
+        <div class="modal-box"> 
+            <div class="modal-head"> 
+                <h2>📢 最新公告（2026年8月17日）</h2> 
+                <button class="close-btn" onclick="closeNotice()">×</button> 
+            </div> 
+            <ul class="list"> 
+                <li>从2026年4月4日起在线，本次校考已结束，在线时间从4月5日~9月5日，9月10日~11日开学</li> 
+                <li>本人已建资源下载站，请遵守本站规则！</li> 
+                <li>此网站采用AI＋GitHub模式</li> 
+                <li>即日起快手账号恢复更新，以电脑开箱视频＋vlog混合为主，原名家伟说电脑保持不变；发现冒充等违规行为，违者重罚</li> 
+                <li>即日起将会下架123云盘下载脚本</li> 
+                <li>请按照家伟说电脑处罚条例如实遵守，违规将按条例进行适当处罚</li> 
+                <li>本次网站运行采用1+1+1运行模式。什么是1+1+1运行模式？1+1+1运行模式是指上线了网站两个（一个主网站jwdngzs.mysxl.cn）＋一个资源下载站jwdngzsxt1.mysxl.cn）和AI＋GitHub模式的网站，采取这种方式考虑做到及时更新，供大家下载，目前试运行中，欢迎大家浏览</li> 
+		<li>网站综合入口下架</li> 
+            </ul> 
+        </div> 
+    </div> 
  
-    <!-- 主体内容 -->
-    <div class="main">
+    <!-- 主体内容 --> 
+    <div class="main"> 
  
-        <!-- 第1页：首页 -->
-        <div class="page active" id="home">
-            <div class="banner">
-                <h1>让你的电脑享受良好的服务</h1>
-                <p>专业人员为你提供可靠的电脑维修、系统定制和维护服务，满足您的电脑维护需求</p>
-            </div>
+        <!-- 第1页：首页 --> 
+        <div class="page active" id="home"> 
+            <div class="banner"> 
+                <h1>让你的电脑享受良好的服务</h1> 
+                <p>专业人员为你提供可靠的电脑维修、系统定制和维护服务，满足您的电脑维护需求</p> 
+            </div> 
  
-            <div class="card">
-                <div class="card-title">
+            <div class="card"> 
+                <div class="card-title"> 
                     最新公告 
-                    <span class="tag tag-blue">2026年7月26日</span>
-                </div>
-                <ul class="list">
-                    <li>校考已结束，在线时间：4月5日~9月5日，9月10日~11日开学</li>
-                    <li>已建立资源下载站，请遵守本站规则</li>
-                    <li>此网站采用AI＋GitHub模式</li>
-                    <li>快手账号恢复更新：电脑开箱视频 + vlog混合内容，原名不变</li>
-                    <li>即日起下架123云盘下载脚本</li>
-                    <li>请遵守处罚条例，违规将按规定处理</li>
-                    <li>本网站采用1+1+1运行模式</li>
-                </ul>
-                <div style="margin-top: 16px;">
-                    <button onclick="openNotice()" style="padding: 10px 22px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <span class="tag tag-blue">2026年8月17日</span> 
+                </div> 
+                <ul class="list"> 
+                    <li>校考已结束，在线时间：4月5日~9月5日，9月10日~11日开学</li> 
+                    <li>已建立资源下载站，请遵守本站规则</li> 
+                    <li>此网站采用AI＋GitHub模式</li> 
+                    <li>快手账号恢复更新：电脑开箱视频 + vlog混合内容，原名不变</li> 
+                    <li>即日起下架123云盘下载脚本</li> 
+                    <li>请遵守处罚条例，违规将按规定处理</li> 
+                    <li>本网站采用1+1+1运行模式</li> 
+		    <li>网站综合入口下架</li> 
+                </ul> 
+                <div style="margin-top: 16px;"> 
+                    <button onclick="openNotice()" style="padding: 10px 22px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"> 
                         查看完整公告 
-                    </button>
-                </div>
-            </div>
+                    </button> 
+                </div> 
+            </div> 
  
-            <div class="card">
-                <div class="card-title">
+            <div class="card"> 
+                <div class="card-title"> 
                     家伟说电脑处罚条例 
-                    <span class="tag tag-red">2026年6月22日</span>
-                </div>
-                <ul class="list">
-                    <li>造谣、辱骂、挑衅等违规：情节轻/中等给予通报；情节严重曝光聊天记录（打码处理），曝光时长依违规程度决定</li>
-                    <li>盗用他人视频：一经发现，侵权投诉并通报处理，通报时长依违规程度决定</li>
-                    <li>严重违规者：取消共创资格，禁止参与任何共创，禁止进入群聊，永久拉黑处理</li>
-                    <li>人肉搜索行为：收集全部证据移交警方处理</li>
-                    <li>群聊刷屏：轻者12小时禁言，中等24小时禁言；严重刷屏+辱骂群成员，移出群聊并通报</li>
-                    <li>骚扰群聊成员：第一次口头警告，第二次按违规程度给予相应处罚</li>
-                </ul>
-                <div class="tip-box tip-yellow">
-                    <strong>温馨提示：</strong>后续违规条例持续更新中。通报涉及隐私内容将进行打码处理，编写目的为防范违规行为，敬请谅解。
-                </div>
-                <div class="tip-box tip-blue">
-                    <strong>处罚规则说明：</strong>前次通报未结束，新处罚时间依次叠加；处罚结束后再违规，将结合历史违规程度加重处罚。抖音账号注销可减半处罚时间，再次违规将直接加重处罚，不恢复原时长。
-                </div>
-            </div>
+                    <span class="tag tag-red">2026年6月22日</span> 
+                </div> 
+                <ul class="list"> 
+                    <li>造谣、辱骂、挑衅等违规：情节轻/中等给予通报；情节严重曝光聊天记录（打码处理），曝光时长依违规程度决定</li> 
+                    <li>盗用他人视频：一经发现，侵权投诉并通报处理，通报时长依违规程度决定</li> 
+                    <li>严重违规者：取消共创资格，禁止参与任何共创，禁止进入群聊，永久拉黑处理</li> 
+                    <li>人肉搜索行为：收集全部证据移交警方处理</li> 
+                    <li>群聊刷屏：轻者12小时禁言，中等24小时禁言；严重刷屏+辱骂群成员，移出群聊并通报</li> 
+                    <li>骚扰群聊成员：第一次口头警告，第二次按违规程度给予相应处罚</li> 
+                </ul> 
+                <div class="tip-box tip-yellow"> 
+                    <strong>温馨提示：</strong>后续违规条例持续更新中。通报涉及隐私内容将进行打码处理，编写目的为防范违规行为，敬请谅解。 
+                </div> 
+                <div class="tip-box tip-blue"> 
+                    <strong>处罚规则说明：</strong>前次通报未结束，新处罚时间依次叠加；处罚结束后再违规，将结合历史违规程度加重处罚。抖音账号注销可减半处罚时间，再次违规将直接加重处罚，不恢复原时长。 
+                </div> 
+            </div> 
  
-            <div class="card">
-                <div class="card-title">
+            <div class="card"> 
+                <div class="card-title"> 
                     最新招募公测 
-                    <span class="tag tag-blue">2026年8月14日</span>
-                </div>
-                <ul class="list">
-                    <li>JiaWei UI11 Lite7计划已开始，尽情期待</li>
-		    <li>JiaWei UI11 Lite7 Pro计划已开始，尽情期待</li>
-                </ul>
-            </div>
+                    <span class="tag tag-blue">2026年8月14日</span> 
+                </div> 
+                <ul class="list"> 
+                    <li>JiaWei UI11 Lite7计划已开始，尽情期待</li> 
+		    <li>JiaWei UI11 Lite7 Pro计划已开始，尽情期待</li> 
+                </ul> 
+            </div> 
  
-            <div class="card">
-                <div class="card-title">
+            <div class="card"> 
+                <div class="card-title"> 
                     通报栏 
-                    <span class="tag tag-red">2026年2月14日</span>
-                </div>
-                <p style="font-weight: 600; margin-bottom: 12px;">处罚对象：</p>
-                <ul class="list" style="margin-bottom: 16px;">
-                    <li>抖音用户：阿特说电脑（原Xiaomi HyperOS3专业版、小艺说电脑）【抖音ID：6192*****385】</li>
-                    <li>QQ用户：xiaomi hyper AI 【QQID: 380****520】</li>
-                    <li>QQ用户：阿特说电脑【QQID: 353****063】</li>
-                    <li>抖音用户：鑫鑫说电脑（原Xiaomi HyperOS3专业版、小艺说电脑）【抖音ID：6638*****710】</li>
-                </ul>
-                <p style="font-weight: 600; margin-bottom: 12px;">违规事由：严重违反相关规定，存在挑衅、辱骂以及骚扰行为</p>
+                    <span class="tag tag-red">2026年2月14日</span> 
+                </div> 
+                <p style="font-weight: 600; margin-bottom: 12px;">处罚对象：</p> 
+                <ul class="list" style="margin-bottom: 16px;"> 
+                    <li>抖音用户：阿特说电脑（原Xiaomi HyperOS3专业版、小艺说电脑）【抖音ID：6192*****385】</li> 
+                    <li>QQ用户：xiaomi hyper AI 【QQID: 380****520】</li> 
+                    <li>QQ用户：阿特说电脑【QQID: 353****063】</li> 
+                    <li>抖音用户：鑫鑫说电脑（原Xiaomi HyperOS3专业版、小艺说电脑）【抖音ID：6638*****710】</li> 
+                </ul> 
+                <p style="font-weight: 600; margin-bottom: 12px;">违规事由：严重违反相关规定，存在挑衅、辱骂以及骚扰行为</p> 
  
-                <div class="tip-box tip-red">
-                    <p style="font-weight: 600; margin-bottom: 8px;">初始处罚决定：</p>
-                    <ul class="list">
-                        <li>禁止参与任何形式的共创</li>
-                        <li>永久拉黑处理</li>
-                        <li>禁止进入群聊</li>
-                        <li>曝光聊天记录（保存期限227天）</li>
-                    </ul>
-                </div>
+                <div class="tip-box tip-red"> 
+                    <p style="font-weight: 600; margin-bottom: 8px;">初始处罚决定：</p> 
+                    <ul class="list"> 
+                        <li>禁止参与任何形式的共创</li> 
+                        <li>永久拉黑处理</li> 
+                        <li>禁止进入群聊</li> 
+                        <li>曝光聊天记录（保存期限227天）</li> 
+                    </ul> 
+                </div> 
  
-                <div class="tip-box tip-red" style="margin-top: 16px;">
-                    <p style="font-weight: 600; margin-bottom: 8px;">证据如下：</p>
-                    <ul class="list">
-                        <li>聊天记录证据：https://www.123865.com/s/fIqqVv-HYLCh</li>  
-                        <li>盗取视频证据：https://www.123684.com/s/fIqqVv-G5LCh</li>  
-                        <li>存在恶意打电话骚扰行为</li>
-                        <li>改我备注损坏我的利益证据：https://1816518115.share.123pan.cn/123pan/fIqqVv-kkYRh</li>  
-                    </ul>
-                </div>
+                <div class="tip-box tip-red" style="margin-top: 16px;"> 
+                    <p style="font-weight: 600; margin-bottom: 8px;">证据如下：</p> 
+                    <ul class="list"> 
+                        <li>聊天记录证据：https://www.123865.com/s/fIqqVv-HYLCh</li>   
+                        <li>盗取视频证据：https://www.123684.com/s/fIqqVv-G5LCh</li>   
+                        <li>存在恶意打电话骚扰行为</li> 
+                        <li>改我备注损坏我的利益证据：https://1816518115.share.123pan.cn/123pan/fIqqVv-kkYRh</li>   
+                    </ul> 
+                </div> 
  
-                <div class="tip-box tip-red" style="margin-top: 16px;">
-                    <p style="font-weight: 600; margin-bottom: 8px;">再次违规追加处罚：</p>
-                    <ul class="list">
-                        <li>盗取视频2次 + 恶意电话骚扰 → 加重处罚至2027年1月15日</li>
-                        <li>群聊公告损害利益 → 加重处罚至2027年2月20日</li>
-                        <li>改备注损坏利益 → 加重处罚至2027年1月1日</li>
-                    </ul>
-                </div>
+                <div class="tip-box tip-red" style="margin-top: 16px;"> 
+                    <p style="font-weight: 600; margin-bottom: 8px;">再次违规追加处罚：</p> 
+                    <ul class="list"> 
+                        <li>盗取视频2次 + 恶意电话骚扰 → 加重处罚至2027年1月15日</li> 
+                        <li>群聊公告损害利益 → 加重处罚至2027年2月20日</li> 
+                        <li>改备注损坏利益 → 加重处罚至2027年1月1日</li> 
+                    </ul> 
+                </div> 
  
-                <div class="tip-box tip-red" style="margin-top: 16px;">
-                    <p style="font-weight: 600; margin-bottom: 8px;">减轻违规行为如下：</p>
-                    <ul class="list">
-                        <li>因表现良好，减轻处罚至2027年1月1日【继续保持】</li>
-                    </ul>
-                </div>
+                <div class="tip-box tip-red" style="margin-top: 16px;"> 
+                    <p style="font-weight: 600; margin-bottom: 8px;">减轻违规行为如下：</p> 
+                    <ul class="list"> 
+                        <li>因表现良好，减轻处罚至2027年1月1日【继续保持】</li> 
+                    </ul> 
+                </div> 
  
-                <p style="margin-top: 16px; font-weight: 700; color: #b91c1c; font-size: 16px;">
-                </p>
-                <p style="margin-top: 8px; color: #64748b; font-size: 14px;">
+                <p style="margin-top: 16px; font-weight: 700; color: #b91c1c; font-size: 16px;"> 
+                </p> 
+                <p style="margin-top: 8px; color: #64748b; font-size: 14px;"> 
                     处罚时间：2026年2月14日 | 结束时间：2027年1月1日 
-                </p>
-            </div>
+                </p> 
+            </div> 
  
-            <div class="card">
-                <div class="card-title">
+            <div class="card"> 
+                <div class="card-title"> 
                     更新日志 
-                    <span class="tag tag-blue">2026年8月10日</span>
-                </div>
-                <ul class="list">
-                    <li>修复资源下载部分链接失效的问题</li>
-                </ul>
-                <p style="margin-top: 10px; color: #94a3b8; font-size: 14px;">版本号：version 12.859.7415</p>
-            </div>
-        </div>
+                    <span class="tag tag-blue">2026年8月17日</span> 
+                </div> 
+                <ul class="list"> 
+                    <li>优化我们的服务板块</li> 
+		    <li>修复我们的服务板块一些已知问题</li> 
+		    <li>修复服务与支持的一些已知问题</li> 
+                </ul> 
+                <p style="margin-top: 10px; color: #94a3b8; font-size: 14px;">版本号：version 12.859.7418</p> 
+            </div> 
+        </div> 
  
-        <!-- 第2页：我们提供什么 -->
-        <div class="page" id="about">
-            <div class="banner">
-                <h1>家伟说电脑的强项</h1>
-                <p>您所提出的要求，就是我们的强项</p>
-            </div>
+        <!-- 第2页：我们提供什么 --> 
+        <div class="page" id="about"> 
+            <div class="banner"> 
+                <h1>家伟说电脑的强项</h1> 
+                <p>您所提出的要求，就是我们的强项</p> 
+            </div> 
  
-            <div class="service-grid">
-                <div class="service-card">
-                    <div class="service-icon">🔧</div>
-                    <h3>专业电脑维修</h3>
-                    <p>对电脑硬件有深入了解，解答各类电脑相关问题，包括虚拟机配置、原厂系统安装等</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">💻</div>
-                    <h3>专业系统重装</h3>
-                    <p>提供专业系统重装服务，支持原版系统、各大品牌OEM原厂系统安装</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🤝</div>
-                    <h3>优质客户服务</h3>
-                    <p>注重客户满意度，团队热情专业，耐心解决您的所有疑虑</p>
-                </div>
-            </div>
+            <div class="service-grid"> 
+                <div class="service-card"> 
+                    <div class="service-icon">🔧</div> 
+                    <h3>专业电脑维修</h3> 
+                    <p>对电脑硬件有深入了解，解答各类电脑相关问题，包括虚拟机配置、原厂系统安装等</p> 
+                </div> 
+                <div class="service-card"> 
+                    <div class="service-icon">💻</div> 
+                    <h3>专业系统重装</h3> 
+                    <p>提供专业系统重装服务，支持原版系统、各大品牌OEM原厂系统安装</p> 
+                </div> 
+                <div class="service-card"> 
+                    <div class="service-icon">🤝</div> 
+                    <h3>优质客户服务</h3> 
+                    <p>注重客户满意度，团队热情专业，耐心解决您的所有疑虑</p> 
+                </div> 
+            </div> 
  
-            <div class="card">
-                <div class="card-title">关于我们</div>
-                <h3 style="font-size: 18px; margin-bottom: 12px;">专业的电脑维修服务</h3>
-                <p style="color: #64748b; margin-bottom: 20px;">
-                    凭借对细节的关注和对客户满意度的注重，您可以全年享受优质的电脑维护服务。
-                </p>
-                <div class="info-box">
-                    <div class="info-item">
-                        <div class="label">在线时间</div>
-                        <div class="value" style="font-size: 15px;">上午 11:00~12:30<br>下午 13:00~21:00</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="label">维修经验</div>
-                        <div class="value">4年+</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="label">保修服务</div>
-                        <div class="value">随时</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="label">服务团队</div>
-                        <div class="value">专业团队</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <div class="card"> 
+                <div class="card-title">关于我们</div> 
+                <h3 style="font-size: 18px; margin-bottom: 12px;">专业的电脑维修服务</h3> 
+                <p style="color: #64748b; margin-bottom: 20px;"> 
+                    凭借对细节的关注和对客户满意度的注重，您可以全年享受优质的电脑维护服务。 
+                </p> 
+                <div class="info-box"> 
+                    <div class="info-item"> 
+                        <div class="label">在线时间</div> 
+                        <div class="value" style="font-size: 15px;">上午 11:00~12:30<br>下午 13:00~21:00</div> 
+                    </div> 
+                    <div class="info-item"> 
+                        <div class="label">维修经验</div> 
+                        <div class="value">4年+</div> 
+                    </div> 
+                    <div class="info-item"> 
+                        <div class="label">保修服务</div> 
+                        <div class="value">随时</div> 
+                    </div> 
+                    <div class="info-item"> 
+                        <div class="label">服务团队</div> 
+                        <div class="value">专业团队</div> 
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
  
-        <!-- 第3页：我们的服务 -->
-        <div class="page" id="service">
-            <div class="banner">
-                <h1>我们的服务</h1>
-                <p>保持您的电脑不会再出问题</p>
-            </div>
+        <!-- 第3页：我们的服务 --> 
+        <div class="page" id="service"> 
+            <div class="banner"> 
+                <h1>我们的服务</h1> 
+                <p>保持您的电脑不会再出问题</p> 
+            </div> 
  
-            <div class="service-grid">
-                <div class="service-card">
-                    <div class="service-icon">⚙️</div>
-                    <h3>系统安装</h3>
-                    <p>专业的系统重装服务和原厂系统重装服务</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🔍</div>
-                    <h3>设备检查</h3>
-                    <p>对电脑设备进行全面检查，及早发现问题，防止潜在故障</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">💬</div>
-                    <h3>疑难解答</h3>
-                    <p>随时回复客户疑问，快速解决各类电脑问题</p>
-                </div>
-            </div>
+            <div class="service-grid"> 
+                <div class="service-card"> 
+                    <div class="service-icon">⚙️</div> 
+                    <h3>系统安装</h3> 
+                    <p>专业的系统重装服务和原厂系统重装服务</p> 
+                </div> 
+                <div class="service-card"> 
+                    <div class="service-icon">🔍</div> 
+                    <h3>设备检查</h3> 
+                    <p>对电脑设备进行全面检查，及早发现问题，防止潜在故障</p> 
+                </div> 
+                <div class="service-card"> 
+                    <div class="service-icon">💬</div> 
+                    <h3>疑难解答</h3> 
+                    <p>随时回复客户疑问，快速解决各类电脑问题</p> 
+                </div> 
+            </div> 
  
-            <div class="card">
-                <div class="card-title">我的账号</div>
-                <div class="tip-box tip-red">
-                    仅在快手/抖音/哔哩哔哩/小红书平台活跃，其他平台出现的「家伟说电脑」一律为冒充，请认准官方账号！
-                </div>
+            <div class="card"> 
+                <div class="card-title">我的账号</div> 
+                <div class="tip-box tip-red"> 
+                    仅在快手/抖音/哔哩哔哩/小红书平台活跃，其他平台出现的「家伟说电脑」一律为冒充，请认准官方账号！ 
+                </div> 
  
-                <div style="margin-top: 20px;">
-                    <div class="platform-card">
-                        <div class="platform-name">🎵 抖音端</div>
-                        <p>主要发布系统开箱、电脑系统测试、病毒测试等内容。精通电脑系统与配置升级，有任何电脑问题均可私信联系。复制下列链接即可进入主页</p>
-                        <p>https://www.douyin.com/user/MS4wLjABAAAADIPvv16WGahRIV47tROT9-X8ooiHgbp77TTHJBifDYQ</p>  
-                    </div>
-                    <div class="platform-card">
-                        <div class="platform-name">🎬 快手端</div>
-                        <p>以日常vlog为主，偶尔发布电脑开箱视频。复制下列链接即可进入主页</p>
-                        <p>https://www.kuaishou.com/profile/3x6izuivk43i5qe</p>  
-                    </div>
-                    <div class="platform-card">
-                        <div class="platform-name">📺 哔哩哔哩端</div>
-                        <p>爱搞电脑的家伟说电脑，复制下列链接即可进入主页</p>
-                        <p>https://space.bilibili.com/1367530151/upload/video</p>  
-                    </div>
-                    <div class="platform-card">
-                        <div class="platform-name">📕 小红书端</div>
-                        <p>暂不支持主页展示</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+                <div style="margin-top: 20px;"> 
+                    <div class="platform-card"> 
+                        <div class="platform-name">🎵 抖音端</div> 
+                        <p>主要发布系统开箱、电脑系统测试、病毒测试等内容。精通电脑系统与配置升级，有任何电脑问题均可私信联系。点击下方按钮即可直接进入主页</p> 
+                        <a href="https://www.douyin.com/user/MS4wLjABAAAADIPvv16WGahRIV47tROT9-X8ooiHgbp77TTHJBifDYQ"  target="_blank" 
+                        style="display: inline-block; margin-top: 12px; padding: 10px 22px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; text-decoration: none; transition: all 0.3s ease;" 
+                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"> 
+                        🎵 进入抖音主页 
+                        </a> 
+                    </div> 
+                    <div class="platform-card"> 
+                        <div class="platform-name">🎬 快手端</div> 
+                        <p>以日常vlog为主，偶尔发布电脑开箱视频。点击下方按钮即可直接进入主页</p> 
+                        <a href="https://www.kuaishou.com/profile/3x6izuivk43i5qe"  target="_blank" 
+                        style="display: inline-block; margin-top: 12px; padding: 10px 22px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; text-decoration: none; transition: all 0.3s ease;" 
+                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"> 
+                        🎬 进入快手主页 
+                        </a> 
+                    </div> 
+                    <div class="platform-card"> 
+                        <div class="platform-name">📺 哔哩哔哩端</div> 
+                        <p>爱搞电脑的家伟说电脑，点击下方按钮即可直接进入主页</p> 
+                        <a href="https://space.bilibili.com/1367530151/upload/video"  target="_blank" 
+                        style="display: inline-block; margin-top: 12px; padding: 10px 22px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; text-decoration: none; transition: all 0.3s ease;" 
+                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"> 
+                        📺 进入B站主页 
+                        </a> 
+                    </div> 
+                    <div class="platform-card"> 
+                        <div class="platform-name">📕 小红书端</div> 
+                        <p>点击下方按钮即可进入主页，目前暂不开放</p> 
+                        <!-- 👇 请将下方href属性的#替换为你的小红书主页真实链接即可 --> 
+                        <a href="暂不提供>" target="_blank" 
+                        style="display: inline-block; margin-top: 12px; padding: 10px 22px; background: linear-gradient(135deg, #ff2442, #ff7a9c); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; text-decoration: none; transition: all 0.3s ease;" 
+                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"> 
+                        📕 进入小红书主页（暂不提供） 
+                        </a> 
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
  
-        <!-- 第4页：资源下载 -->
-        <div class="page" id="resource">
-            <div class="banner">
-                <h1>资源下载中心</h1>
-                <p>超多资源等你来拿</p>
-            </div>
+        <!-- 第4页：资源下载 --> 
+        <div class="page" id="resource"> 
+            <div class="banner"> 
+                <h1>资源下载中心</h1> 
+                <p>超多资源等你来拿</p> 
+            </div> 
  
-            <div class="card">
-                <div class="res-group">
-                    <h3>📱 官网APP（2025年12月16日更新）</h3>
-                    <div class="res-grid">
-                        <div class="res-item">
-                            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-FbzCh?notoken=1"    target="_blank">家伟说电脑官网APP</a>
-                            <div class="res-desc">版本：21.6025.91324</div>
-                        </div>
-                        <div class="res-item">
-                            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-YbzCh?notoken=1"    target="_blank">家伟说电脑资源下载站官网APP</a>
-                            <div class="res-desc">版本：23.6072.37842</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="card"> 
+                <div class="res-group"> 
+                    <h3>📱 官网APP（2025年12月16日更新）</h3> 
+                    <div class="res-grid"> 
+                        <div class="res-item"> 
+                            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-FbzCh?notoken=1"     target="_blank">家伟说电脑官网APP</a> 
+                            <div class="res-desc">版本：21.6025.91324</div> 
+                        </div> 
+                        <div class="res-item"> 
+                            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-YbzCh?notoken=1"     target="_blank">家伟说电脑资源下载站官网APP</a> 
+                            <div class="res-desc">版本：23.6072.37842</div> 
+                        </div> 
+                    </div> 
+                </div> 
  
-                <div class="res-group">
-                    <h3>⚡ 系统工具脚本（2025年5月17日更新）</h3>
-                    <div class="res-grid">
-                        <div class="res-item">
-                            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-q4tCh?notoken=1"    target="_blank">Windows11跳过联网激活脚本</a>
-                            <div class="res-desc"></div>
-                        </div>
-                    </div>
-                </div>
+                <div class="res-group"> 
+                    <h3>⚡ 系统工具脚本（2025年5月17日更新）</h3> 
+                    <div class="res-grid"> 
+                        <div class="res-item"> 
+                            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-q4tCh?notoken=1"     target="_blank">Windows11跳过联网激活脚本</a> 
+                            <div class="res-desc"></div> 
+                        </div> 
+                    </div> 
+                </div> 
  
-                <div class="res-group">
-                    <h3>🪟 Windows原版系统镜像（2026年8月17日更新）</h3>
-                    <div class="res-grid">
-                        <div class="res-item">
-                            <a href="https://www.microsoft.com/zh-cn/software-download/windows11"    target="_blank">Windows11微软原版系统</a>
-                            <div class="res-desc"></div>
-                        </div>
-                        <div class="res-item">
-                            <a href="https://next.itellyou.cn/"    target="_blank">MSDN（新）</a>
-                            <div class="res-desc"></div>
-                        </div>
- 			<div class="res-item">
-                            <a href="https://msdn.itellyou.cn/"    target="_blank">MSDN（旧）</a>
-                            <div class="res-desc"></div>
-                        </div>
-                    </div>
-                </div>
+                <div class="res-group"> 
+                    <h3>🪟 Windows原版系统镜像（2026年8月17日更新）</h3> 
+                    <div class="res-grid"> 
+                        <div class="res-item"> 
+                            <a href="https://www.microsoft.com/zh-cn/software-download/windows11"     target="_blank">Windows11微软原版系统</a> 
+                            <div class="res-desc"></div> 
+                        </div> 
+                        <div class="res-item"> 
+                            <a href="https://next.itellyou.cn/"     target="_blank">MSDN（新）</a> 
+                            <div class="res-desc"></div> 
+                        </div> 
+ 			<div class="res-item"> 
+                            <a href="https://msdn.itellyou.cn/"     target="_blank">MSDN（旧）</a> 
+                            <div class="res-desc"></div> 
+                        </div> 
+                    </div> 
+                </div> 
  
-                <div class="res-group">
-                    <h3>🏭 各大品牌OEM原厂系统（2026年8月17日更新）</h3>
-                    <div class="res-grid">
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-TceCh?notoken=1"    target="_blank">华硕灵耀14 OEM</a><div class="res-desc">UX3405CA-WIN11-24H2专业版</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-dceCh?notoken=1"    target="_blank">华硕天选5 Pro酷睿版OEM</a><div class="res-desc">FX607J-Windows11</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-3ceCh?notoken=1"    target="_blank">华为MateBook D15 OEM</a><div class="res-desc">BoB-WAH9P</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-hceCh?notoken=1"    target="_blank">华硕灵耀双屏X OEM</a><div class="res-desc">UX4100EG</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-HceCh?notoken=1"    target="_blank">Surface Pro 9 OEM</a><div class="res-desc">微软原厂镜像</div></div>
-                        <div class="res-item"><a href="https://softwincn.com/gjxz"    target="_blank">GPD OEM</a><div class="res-desc">官网跳转</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-9ceCh?notoken=1"    target="_blank">神州战神Z6 OEM</a><div class="res-desc">CT5NA</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-EceCh?notoken=1"    target="_blank">七彩虹将星X15 AT OEM</a><div class="res-desc">23-H45-NVMe-SL-22H2</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-kceCh?notoken=1"    target="_blank">华硕天选3 OEM</a><div class="res-desc">原厂系统镜像</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-oceCh?notoken=1"    target="_blank">华硕天选4 OEM</a><div class="res-desc">FX507VV</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-xceCh?notoken=1"    target="_blank">小米笔记本OEM</a><div class="res-desc">演示机提取 | 需FirPE安装</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-NutCh?notoken=1"    target="_blank">Surface Pro 10 OEM</a><div class="res-desc">微软原厂镜像</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-4ceCh?notoken=1"    target="_blank">华硕天选第一代OEM</a><div class="res-desc">原厂系统镜像</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-pceCh?notoken=1"    target="_blank">七彩虹隐星G15 OEM</a><div class="res-desc">24-CH-HOME-23H2</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-fceCh?notoken=1"    target="_blank">华硕枪神8 OEM</a><div class="res-desc">原厂系统镜像</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-2ceCh?notoken=1"    target="_blank">ThinkPad X1 Carbon 2022 OEM</a><div class="res-desc">30周年限定版</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-sceCh?notoken=1"    target="_blank">戴尔外星人m15R6 OEM</a><div class="res-desc">Alienware原厂镜像</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-WceCh?notoken=1"    target="_blank">华为MateBook 14s OEM</a><div class="res-desc">2023 HKFG-16-32-xx Win11</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-CceCh?notoken=1"    target="_blank">华为MateBook X Pro OEM</a><div class="res-desc">MachD-WFH9A 2021-Win11</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-NceCh?notoken=1"    target="_blank">联想小新Pro 16 OEM</a><div class="res-desc">IRH8 (83AQ)-Win11HomeCN</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-OceCh?notoken=1"    target="_blank">宏基AN515-57 OEM</a><div class="res-desc">原厂系统镜像</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-RceCh?notoken=1"    target="_blank">七彩虹将星X17 Pro OEM</a><div class="res-desc">23-NVMe-SL-22H2</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-lbtCh?notoken=1"    target="_blank">华硕天选6Pro酷睿版OEM</a><div class="res-desc">FX608LM Win11 24H2</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-7btCh?notoken=1"    target="_blank">华硕天选6Pro锐龙版OEM</a><div class="res-desc">FA608FM Win11 24H2</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-rxiCh?notoken=1"    target="_blank">荣耀MagicBook Pro14 2025 OEM</a><div class="res-desc">U5 32GB+1T Win11 24H2</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-TxiCh?notoken=1"    target="_blank">华为MateBook 13 OEM</a><div class="res-desc">WRTD-WFH9</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-dxiCh?notoken=1"    target="_blank">七彩虹将星X15 OEM</a><div class="res-desc">原厂系统镜像</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-sxiCh?notoken=1"    target="_blank">荣耀X14 Plus OEM</a><div class="res-desc">R7 FMI-721</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-rtiCh?notoken=1"    target="_blank">一号本游侠X1 Pro OEM</a><div class="res-desc">AMD-HX370 CPU专用</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-8tiCh?notoken=1"    target="_blank">小米Air13.3 OEM</a><div class="res-desc">i5 6200</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-ayiCh?notoken=1"    target="_blank">小米Air13.3 OEM</a><div class="res-desc">i5 6200 / i5 8250+MX150</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-JqiCh?notoken=1"    target="_blank">联想拯救者Y7000P OEM</a><div class="res-desc">原厂系统镜像</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-wozCh?notoken=1"    target="_blank">鸿视讯一体机原厂镜像</a><div class="res-desc">i5 4210M/4200M专用</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-LILCh?notoken=1"    target="_blank">戴尔灵越7570原厂镜像</a><div class="res-desc">原厂系统</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-4zLCh?notoken=1"    target="_blank">华为MateBook GT 14 OEM</a><div class="res-desc">原厂系统镜像</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-OutCh?notoken=1"    target="_blank">Surface Pro 5 OEM</a><div class="res-desc">微软原厂镜像</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-oEZOh"    target="_blank">VAIO拯救大师 OEM</a><div class="res-desc">原厂系统镜像</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-9kZOh"    target="_blank">联想 ThinkBook 16 OEM</a><div class="res-desc">G8+IPD 21VJ-Win11</div></div>
-			<div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-XaHuh"    target="_blank">Surface 3 OEM</a><div class="res-desc">微软原厂镜像</div></div>
-			<div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-rihKh"    target="_blank">华硕VivoBook15 OEM</a><div class="res-desc">X415EA、X415EP、X515EA、X515EP</div></div>
-                    </div>
-                </div>
+                <div class="res-group"> 
+                    <h3>🏭 各大品牌OEM原厂系统（2026年8月17日更新）</h3> 
+                    <div class="res-grid"> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-TceCh?notoken=1"     target="_blank">华硕灵耀14 OEM</a><div class="res-desc">UX3405CA-WIN11-24H2专业版</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-dceCh?notoken=1"     target="_blank">华硕天选5 Pro酷睿版OEM</a><div class="res-desc">FX607J-Windows11</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-3ceCh?notoken=1"     target="_blank">华为MateBook D15 OEM</a><div class="res-desc">BoB-WAH9P</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-hceCh?notoken=1"     target="_blank">华硕灵耀双屏X OEM</a><div class="res-desc">UX4100EG</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-HceCh?notoken=1"     target="_blank">Surface Pro 9 OEM</a><div class="res-desc">微软原厂镜像</div></div> 
+                        <div class="res-item"><a href="https://softwincn.com/gjxz"     target="_blank">GPD OEM</a><div class="res-desc">官网跳转</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-9ceCh?notoken=1"     target="_blank">神州战神Z6 OEM</a><div class="res-desc">CT5NA</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-EceCh?notoken=1"     target="_blank">七彩虹将星X15 AT OEM</a><div class="res-desc">23-H45-NVMe-SL-22H2</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-kceCh?notoken=1"     target="_blank">华硕天选3 OEM</a><div class="res-desc">原厂系统镜像</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-oceCh?notoken=1"     target="_blank">华硕天选4 OEM</a><div class="res-desc">FX507VV</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-xceCh?notoken=1"     target="_blank">小米笔记本OEM</a><div class="res-desc">演示机提取 | 需FirPE安装</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-NutCh?notoken=1"     target="_blank">Surface Pro 10 OEM</a><div class="res-desc">微软原厂镜像</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-4ceCh?notoken=1"     target="_blank">华硕天选第一代OEM</a><div class="res-desc">原厂系统镜像</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-pceCh?notoken=1"     target="_blank">七彩虹隐星G15 OEM</a><div class="res-desc">24-CH-HOME-23H2</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-fceCh?notoken=1"     target="_blank">华硕枪神8 OEM</a><div class="res-desc">原厂系统镜像</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-2ceCh?notoken=1"     target="_blank">ThinkPad X1 Carbon 2022 OEM</a><div class="res-desc">30周年限定版</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-sceCh?notoken=1"     target="_blank">戴尔外星人m15R6 OEM</a><div class="res-desc">Alienware原厂镜像</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-WceCh?notoken=1"     target="_blank">华为MateBook 14s OEM</a><div class="res-desc">2023 HKFG-16-32-xx Win11</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-CceCh?notoken=1"     target="_blank">华为MateBook X Pro OEM</a><div class="res-desc">MachD-WFH9A 2021-Win11</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-NceCh?notoken=1"     target="_blank">联想小新Pro 16 OEM</a><div class="res-desc">IRH8 (83AQ)-Win11HomeCN</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-OceCh?notoken=1"     target="_blank">宏基AN515-57 OEM</a><div class="res-desc">原厂系统镜像</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-RceCh?notoken=1"     target="_blank">七彩虹将星X17 Pro OEM</a><div class="res-desc">23-NVMe-SL-22H2</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-lbtCh?notoken=1"     target="_blank">华硕天选6Pro酷睿版OEM</a><div class="res-desc">FX608LM Win11 24H2</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-7btCh?notoken=1"     target="_blank">华硕天选6Pro锐龙版OEM</a><div class="res-desc">FA608FM Win11 24H2</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-rxiCh?notoken=1"     target="_blank">荣耀MagicBook Pro14 2025 OEM</a><div class="res-desc">U5 32GB+1T Win11 24H2</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-TxiCh?notoken=1"     target="_blank">华为MateBook 13 OEM</a><div class="res-desc">WRTD-WFH9</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-dxiCh?notoken=1"     target="_blank">七彩虹将星X15 OEM</a><div class="res-desc">原厂系统镜像</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-sxiCh?notoken=1"     target="_blank">荣耀X14 Plus OEM</a><div class="res-desc">R7 FMI-721</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-rtiCh?notoken=1"     target="_blank">一号本游侠X1 Pro OEM</a><div class="res-desc">AMD-HX370 CPU专用</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-8tiCh?notoken=1"     target="_blank">小米Air13.3 OEM</a><div class="res-desc">i5 6200</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-ayiCh?notoken=1"     target="_blank">小米Air13.3 OEM</a><div class="res-desc">i5 6200 / i5 8250+MX150</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-JqiCh?notoken=1"     target="_blank">联想拯救者Y7000P OEM</a><div class="res-desc">原厂系统镜像</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-wozCh?notoken=1"     target="_blank">鸿视讯一体机原厂镜像</a><div class="res-desc">i5 4210M/4200M专用</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-LILCh?notoken=1"     target="_blank">戴尔灵越7570原厂镜像</a><div class="res-desc">原厂系统</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-4zLCh?notoken=1"     target="_blank">华为MateBook GT 14 OEM</a><div class="res-desc">原厂系统镜像</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-OutCh?notoken=1"     target="_blank">Surface Pro 5 OEM</a><div class="res-desc">微软原厂镜像</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-oEZOh"     target="_blank">VAIO拯救大师 OEM</a><div class="res-desc">原厂系统镜像</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-9kZOh"     target="_blank">联想 ThinkBook 16 OEM</a><div class="res-desc">G8+IPD 21VJ-Win11</div></div> 
+			<div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-XaHuh"     target="_blank">Surface 3 OEM</a><div class="res-desc">微软原厂镜像</div></div> 
+			<div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-rihKh"     target="_blank">华硕VivoBook15 OEM</a><div class="res-desc">X415EA、X415EP、X515EA、X515EP</div></div> 
+                    </div> 
+                </div> 
  
-                <div class="res-group">
-                    <h3>👨‍🏫 自制教师专用系统（2024年2月7日更新）</h3>
-                    <div class="res-grid">
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-rceCh?notoken=1"    target="_blank">鸿合HiteVision定制系统</a><div class="res-desc">内置Win7、Win10、Win11</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-DceCh?notoken=1"    target="_blank">希沃SEEWO定制系统</a><div class="res-desc">内置Win7、Win10、Win11</div></div>
-                    </div>
-                </div>
+                <div class="res-group"> 
+                    <h3>👨‍🏫 自制教师专用系统（2024年2月7日更新）</h3> 
+                    <div class="res-grid"> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-rceCh?notoken=1"     target="_blank">鸿合HiteVision定制系统</a><div class="res-desc">内置Win7、Win10、Win11</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-DceCh?notoken=1"     target="_blank">希沃SEEWO定制系统</a><div class="res-desc">内置Win7、Win10、Win11</div></div> 
+                    </div> 
+                </div> 
  
-                <div class="res-group">
-                    <h3>⚡ 自制精简系统（2024年1月28日更新）</h3>
-                    <div class="res-grid">
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-8ceCh?notoken=1"    target="_blank">AtlasOS精简版系统</a><div class="res-desc">内置Win10、Win11 | 2024.1.28更新</div></div>
-                    </div>
-                </div>
+                <div class="res-group"> 
+                    <h3>⚡ 自制精简系统（2024年1月28日更新）</h3> 
+                    <div class="res-grid"> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-8ceCh?notoken=1"     target="_blank">AtlasOS精简版系统</a><div class="res-desc">内置Win10、Win11 | 2024.1.28更新</div></div> 
+                    </div> 
+                </div> 
  
-                <div class="res-group">
-                    <h3>🎨 自制定制系统合集（2026年7月27日更新）</h3>
-                    <div class="res-grid">
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-0ceCh?notoken=1"    target="_blank">2024新年快乐定制Win7</a><div class="res-desc">新年主题定制版</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-KceCh?notoken=1"    target="_blank">2024新年烟花彼岸Win11</a><div class="res-desc">烟花主题定制版</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-UceCh?notoken=1"    target="_blank">原神Genshin UI11 Pro</a><div class="res-desc">原神主题定制系统</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-pOtCh?notoken=1"    target="_blank">HX UI11 Pro</a><div class="res-desc"></div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-IOtCh?notoken=1"    target="_blank">JiaWei UI10 SE</a><div class="res-desc"></div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-MOtCh?notoken=1"    target="_blank">JiaWei UI10 Pro</a><div class="res-desc"></div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-wOtCh?notoken=1"    target="_blank">JiaWei UI10 生日特别版2024</a><div class="res-desc">2024生日限定</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-7ceCh?notoken=1"    target="_blank">XiaoYu OS1.0</a><div class="res-desc">小宇工作室定制</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-zceCh?notoken=1"    target="_blank">Happy New Year UI 2025</a><div class="res-desc">2025新年主题</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-7ceCh?notoken=1"    target="_blank">JiaWei UI11</a><div class="res-desc"></div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-POtCh?notoken=1"    target="_blank">JiaWei UI11 Pro</a><div class="res-desc"></div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-GOtCh?notoken=1"    target="_blank">JiaWei UI11 Plus</a><div class="res-desc"></div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-XOtCh?notoken=1"    target="_blank">JiaWei UI11 Ultra</a><div class="res-desc"></div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-2OtCh?notoken=1"    target="_blank">JiaWei UI11 OS Pro Max</a><div class="res-desc"></div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-tceCh?notoken=1"    target="_blank">Sharon OS</a><div class="res-desc"></div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-iceCh?notoken=1"    target="_blank">Perce OS</a><div class="res-desc"></div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-o3iCh?notoken=1"    target="_blank">JiaWei UI11 Max 生日版2025</a><div class="res-desc">2025生日限定</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-9nzCh?notoken=1"    target="_blank">JiaWei UI11 Lite2</a><div class="res-desc"></div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-4MLCh?notoken=1"    target="_blank">JiaWei UI11 Lite3 Happy New Year Edition 2026</a><div class="res-desc">2026新年特别版</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-h5LCh?notoken=1"    target="_blank">JiaWei UI11 Lite4</a><div class="res-desc"></div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-6sZRh?notoken=1"    target="_blank">JiaWei UI11 Lite5</a><div class="res-desc"></div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-670Rh?notoken=1"    target="_blank">JiaWei UI11 Lite6</a><div class="res-desc"></div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-yFqRh"    target="_blank">JiaWei UI11 Lite6R 生日版2026</a><div class="res-desc">2026生日限定</div></div>
-			<div class="res-item"><a href="无"   target="_blank">JiaWei UI11 Lite7</a><div class="res-desc">暂不公开 | 敬请期待</div></div>
-			<div class="res-item"><a href="无"   target="_blank">JiaWei UI11 Lite7 Pro</a><div class="res-desc">暂不公开 | 敬请期待</div></div>
-                    </div>
-                </div>
+                <div class="res-group"> 
+                    <h3>🎨 自制定制系统合集（2026年7月27日更新）</h3> 
+                    <div class="res-grid"> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-0ceCh?notoken=1"     target="_blank">2024新年快乐定制Win7</a><div class="res-desc">新年主题定制版</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-KceCh?notoken=1"     target="_blank">2024新年烟花彼岸Win11</a><div class="res-desc">烟花主题定制版</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-UceCh?notoken=1"     target="_blank">原神Genshin UI11 Pro</a><div class="res-desc">原神主题定制系统</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-pOtCh?notoken=1"     target="_blank">HX UI11 Pro</a><div class="res-desc"></div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-IOtCh?notoken=1"     target="_blank">JiaWei UI10 SE</a><div class="res-desc"></div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-MOtCh?notoken=1"     target="_blank">JiaWei UI10 Pro</a><div class="res-desc"></div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-wOtCh?notoken=1"     target="_blank">JiaWei UI10 生日特别版2024</a><div class="res-desc">2024生日限定</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-7ceCh?notoken=1"     target="_blank">XiaoYu OS1.0</a><div class="res-desc">小宇工作室定制</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-zceCh?notoken=1"     target="_blank">Happy New Year UI 2025</a><div class="res-desc">2025新年主题</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-7ceCh?notoken=1"     target="_blank">JiaWei UI11</a><div class="res-desc"></div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-POtCh?notoken=1"     target="_blank">JiaWei UI11 Pro</a><div class="res-desc"></div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-GOtCh?notoken=1"     target="_blank">JiaWei UI11 Plus</a><div class="res-desc"></div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-XOtCh?notoken=1"     target="_blank">JiaWei UI11 Ultra</a><div class="res-desc"></div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-2OtCh?notoken=1"     target="_blank">JiaWei UI11 OS Pro Max</a><div class="res-desc"></div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-tceCh?notoken=1"     target="_blank">Sharon OS</a><div class="res-desc"></div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-iceCh?notoken=1"     target="_blank">Perce OS</a><div class="res-desc"></div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-o3iCh?notoken=1"     target="_blank">JiaWei UI11 Max 生日版2025</a><div class="res-desc">2025生日限定</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-9nzCh?notoken=1"     target="_blank">JiaWei UI11 Lite2</a><div class="res-desc"></div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-4MLCh?notoken=1"     target="_blank">JiaWei UI11 Lite3 Happy New Year Edition 2026</a><div class="res-desc">2026新年特别版</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-h5LCh?notoken=1"     target="_blank">JiaWei UI11 Lite4</a><div class="res-desc"></div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-6sZRh?notoken=1"     target="_blank">JiaWei UI11 Lite5</a><div class="res-desc"></div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-670Rh?notoken=1"     target="_blank">JiaWei UI11 Lite6</a><div class="res-desc"></div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-yFqRh"     target="_blank">JiaWei UI11 Lite6R 生日版2026</a><div class="res-desc">2026生日限定</div></div> 
+			<div class="res-item"><a href="无"   target="_blank">JiaWei UI11 Lite7</a><div class="res-desc">暂不公开 | 敬请期待</div></div> 
+			<div class="res-item"><a href="无"   target="_blank">JiaWei UI11 Lite7 Pro</a><div class="res-desc">暂不公开 | 敬请期待</div></div> 
+                    </div> 
+                </div> 
  
-                <div class="res-group">
-                    <h3>🎭 Windows主题定制系统（2025年11月2日更新）</h3>
-                    <div class="res-grid">
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-LceCh?notoken=1"    target="_blank">Win11猫耳娘定制版</a><div class="res-desc">二次元主题定制</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-5ceCh?notoken=1"    target="_blank">UEG联合政府550W定制版</a><div class="res-desc">流浪地球主题 | Win10</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-qceCh?notoken=1"    target="_blank">HUTAOMU OS6.1</a><div class="res-desc">胡桃木主题定制系统</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-afzCh"    target="_blank">Maidows_OS_ver0.3beta</a><div class="res-desc">定制版</div></div>
-                    </div>
-                </div>
+                <div class="res-group"> 
+                    <h3>🎭 Windows主题定制系统（2025年11月2日更新）</h3> 
+                    <div class="res-grid"> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-LceCh?notoken=1"     target="_blank">Win11猫耳娘定制版</a><div class="res-desc">二次元主题定制</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-5ceCh?notoken=1"     target="_blank">UEG联合政府550W定制版</a><div class="res-desc">流浪地球主题 | Win10</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-qceCh?notoken=1"     target="_blank">HUTAOMU OS6.1</a><div class="res-desc">胡桃木主题定制系统</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-afzCh"     target="_blank">Maidows_OS_ver0.3beta</a><div class="res-desc">定制版</div></div> 
+                    </div> 
+                </div> 
  
-                <!-- ★★★ 新增：自制工具 ★★★ -->
-                <div class="res-group">
-                    <h3>🔧 自制工具（2026年8月9日更新）</h3>
-                    <div class="res-grid">
-                        <!-- 请替换下面的链接为真实下载链接 -->
-                        <div class="res-item">
-                            <a href="https://wwbnl.lanzouw.com/iFdtq418s80f"  target="_blank">家伟说电脑工具箱v2.4</a>
-                            <div class="res-desc">自制电脑维护 | 提取码：NTFS</div>
-                        </div>
-                        <!-- 请替换下面的链接为真实下载链接 -->
-                        <div class="res-item">
-                            <a href="https://wwbnl.lanzouw.com/ikLoH418s9ab"  target="_blank">家伟说电脑工具箱v3.1</a>
-                            <div class="res-desc">自制电脑维护工具箱 | 提取码：NTFS</div>
-                        </div>
-                        <!-- 请替换下面的链接为真实下载链接 -->
-                        <div class="res-item">
-                            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-SD68h"  target="_blank">Win11 OOBE跳过工具</a>
-                            <div class="res-desc">一键跳过Windows11首次开机设置引导</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ★★★ 自制工具 END ★★★ -->
+                <div class="res-group"> 
+                    <h3>🔧 自制工具（2026年8月9日更新）</h3> 
+                    <div class="res-grid"> 
+                        <div class="res-item"> 
+                            <a href="https://wwbnl.lanzouw.com/iFdtq418s80f"   target="_blank">家伟说电脑工具箱v2.4</a> 
+                            <div class="res-desc">自制电脑维护 | 提取码：NTFS</div> 
+                        </div> 
+                        <div class="res-item"> 
+                            <a href="https://wwbnl.lanzouw.com/ikLoH418s9ab"   target="_blank">家伟说电脑工具箱v3.1</a> 
+                            <div class="res-desc">自制电脑维护工具箱 | 提取码：NTFS</div> 
+                        </div> 
+                        <div class="res-item"> 
+                            <a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-SD68h"   target="_blank">Win11 OOBE跳过工具</a> 
+                            <div class="res-desc">一键跳过Windows11首次开机设置引导</div> 
+                        </div> 
+                    </div> 
+                </div> 
  
-                <div class="res-group">
-                    <h3>🛠️ Windows必备工具（2026年6月12日更新）</h3>
-                    <div class="res-grid">
-                        <div class="res-item"><a href="https://www.sysceo.com/dc.html"    target="_blank">驱动总裁</a><div class="res-desc">精准匹配驱动 | 一键智能安装</div></div>
-                        <div class="res-item"><a href="https://www.diskgenius.cn/"    target="_blank">DiskGenius</a><div class="res-desc">数据恢复/分区管理工具</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-QxiCh?notoken=1"    target="_blank">Bandizip 压缩工具</a><div class="res-desc">轻量高效压缩软件</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-yceCh?notoken=1"    target="_blank">GeekUninstaller</a><div class="res-desc">强力软件卸载工具</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-MbzCh?notoken=1"    target="_blank">HiBit Uninstaller 3.2.70</a><div class="res-desc">专业软件卸载工具</div></div>
-                        <div class="res-item"><a href="https://otp.landian.vip/zh-cn/"    target="_blank">Office Tool Plus</a><div class="res-desc">Office部署管理工具</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-UFiCh?notoken=1"    target="_blank">图吧工具箱</a><div class="res-desc">硬件检测全能工具箱 | 版本2025.07R2</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-kxiCh?notoken=1"    target="_blank">图吧工具箱</a><div class="res-desc">硬件检测全能工具箱 | 版本2025.2</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-VceCh?notoken=1"    target="_blank">图吧工具箱</a><div class="res-desc">硬件检测全能工具箱 | 版本2024.7</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-TeeCh?notoken=1"    target="_blank">口袋系统(WinToGo)</a><div class="res-desc">将系统装进自己的移动存储设备里 v4.14</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-99YRh?notoken=1"    target="_blank">Rufus</a><div class="res-desc">U盘启动制作工具 | 版本4.14.2377 v4.14</div></div>
-                        <div class="res-item"><a href="https://www.lanzouw.com/i0XQ021gy0aj"    target="_blank">微软常用运行库合集</a><div class="res-desc">2023.10.04版 | 32+64位合集【提取码：NTFS】</div></div>
-                        <div class="res-item"><a href="https://www.lanzouw.com/iohLI21gwzuh"    target="_blank">Dism++ 系统优化</a><div class="res-desc">系统清理/优化/部署工具【提取码：NTFS】</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-heeCh?notoken=1"    target="_blank">Office 2016</a><div class="res-desc">微软办公软件</div></div>
-                        <div class="res-item"><a href="https://www.lanzoui.com/b710887"    target="_blank">HEU KMS Activator</a><div class="res-desc">Windows/Office激活工具 | 需关闭杀毒软件</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-9eeCh?notoken=1"    target="_blank">UltraISO 软碟通</a><div class="res-desc">镜像编辑制作工具</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-1xiCh?notoken=1"    target="_blank">IDM下载器激活脚本</a><div class="res-desc">IDM更新需要重新打开此软件重新激活 | 需关闭杀毒软件</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-xxiCh?notoken=1"    target="_blank">Win7补丁工具</a><div class="res-desc">解决Win7驱动安装失败问题</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-pxiCh?notoken=1"    target="_blank">Win7体验指数评估工具</a><div class="res-desc">Win10/11体验Win7系统评分 | 需关闭杀毒软件</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-yRzCh?notoken=1"    target="_blank">Defender Remover</a><div class="res-desc">Windows安全中心卸载工具 | 需关闭杀毒软件</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-VRzCh?notoken=1"    target="_blank">Windows Update Blocker</a><div class="res-desc">系统更新禁用工具 | 需关闭杀毒软件</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-L9ZOh?notoken=1"    target="_blank">图吧工具箱</a><div class="res-desc">硬件检测全能工具箱 | 版本2026.1</div></div>
-                    </div>
-                </div>
+                <div class="res-group"> 
+                    <h3>🛠️ Windows必备工具（2026年6月12日更新）</h3> 
+                    <div class="res-grid"> 
+                        <div class="res-item"><a href="https://www.sysceo.com/dc.html"     target="_blank">驱动总裁</a><div class="res-desc">精准匹配驱动 | 一键智能安装</div></div> 
+                        <div class="res-item"><a href="https://www.diskgenius.cn/"     target="_blank">DiskGenius</a><div class="res-desc">数据恢复/分区管理工具</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-QxiCh?notoken=1"     target="_blank">Bandizip 压缩工具</a><div class="res-desc">轻量高效压缩软件</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-yceCh?notoken=1"     target="_blank">GeekUninstaller</a><div class="res-desc">强力软件卸载工具</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-MbzCh?notoken=1"     target="_blank">HiBit Uninstaller 3.2.70</a><div class="res-desc">专业软件卸载工具</div></div> 
+                        <div class="res-item"><a href="https://otp.landian.vip/zh-cn/"     target="_blank">Office Tool Plus</a><div class="res-desc">Office部署管理工具</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-UFiCh?notoken=1"     target="_blank">图吧工具箱</a><div class="res-desc">硬件检测全能工具箱 | 版本2025.07R2</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-kxiCh?notoken=1"     target="_blank">图吧工具箱</a><div class="res-desc">硬件检测全能工具箱 | 版本2025.2</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-VceCh?notoken=1"     target="_blank">图吧工具箱</a><div class="res-desc">硬件检测全能工具箱 | 版本2024.7</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-TeeCh?notoken=1"     target="_blank">口袋系统(WinToGo)</a><div class="res-desc">将系统装进自己的移动存储设备里 v4.14</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-99YRh?notoken=1"     target="_blank">Rufus</a><div class="res-desc">U盘启动制作工具 | 版本4.14.2377 v4.14</div></div> 
+                        <div class="res-item"><a href="https://www.lanzouw.com/i0XQ021gy0aj"     target="_blank">微软常用运行库合集</a><div class="res-desc">2023.10.04版 | 32+64位合集【提取码：NTFS】</div></div> 
+                        <div class="res-item"><a href="https://www.lanzouw.com/iohLI21gwzuh"     target="_blank">Dism++ 系统优化</a><div class="res-desc">系统清理/优化/部署工具【提取码：NTFS】</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-heeCh?notoken=1"     target="_blank">Office 2016</a><div class="res-desc">微软办公软件</div></div> 
+                        <div class="res-item"><a href="https://www.lanzoui.com/b710887"     target="_blank">HEU KMS Activator</a><div class="res-desc">Windows/Office激活工具 | 需关闭杀毒软件</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-9eeCh?notoken=1"     target="_blank">UltraISO 软碟通</a><div class="res-desc">镜像编辑制作工具</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-1xiCh?notoken=1"     target="_blank">IDM下载器激活脚本</a><div class="res-desc">IDM更新需要重新打开此软件重新激活 | 需关闭杀毒软件</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-xxiCh?notoken=1"     target="_blank">Win7补丁工具</a><div class="res-desc">解决Win7驱动安装失败问题</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-pxiCh?notoken=1"     target="_blank">Win7体验指数评估工具</a><div class="res-desc">Win10/11体验Win7系统评分 | 需关闭杀毒软件</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-yRzCh?notoken=1"     target="_blank">Defender Remover</a><div class="res-desc">Windows安全中心卸载工具 | 需关闭杀毒软件</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-VRzCh?notoken=1"     target="_blank">Windows Update Blocker</a><div class="res-desc">系统更新禁用工具 | 需关闭杀毒软件</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-L9ZOh?notoken=1"     target="_blank">图吧工具箱</a><div class="res-desc">硬件检测全能工具箱 | 版本2026.1</div></div> 
+                    </div> 
+                </div> 
  
-                <div class="res-group">
-                    <h3>💾 PE维护工具（2025年8月8日更新）</h3>
-                    <div class="res-grid">
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-HeeCh?notoken=1"    target="_blank">Ventoy</a><div class="res-desc">新一代多系统启动U盘解决方案</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-AeeCh?notoken=1"    target="_blank">微PE工具箱</a><div class="res-desc">干净清爽的PE维护系统</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-EeeCh?notoken=1"    target="_blank">FirPE</a><div class="res-desc">现代化PE维护系统</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-keeCh?notoken=1"    target="_blank">优启通</a><div class="res-desc">IT天空出品PE工具</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-fxiCh?notoken=1"    target="_blank">HotPE</a><div class="res-desc">模块化PE维护系统</div></div>
-                    </div>
-                </div>
+                <div class="res-group"> 
+                    <h3>💾 PE维护工具（2025年8月8日更新）</h3> 
+                    <div class="res-grid"> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-HeeCh?notoken=1"     target="_blank">Ventoy</a><div class="res-desc">新一代多系统启动U盘解决方案</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-AeeCh?notoken=1"     target="_blank">微PE工具箱</a><div class="res-desc">干净清爽的PE维护系统</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-EeeCh?notoken=1"     target="_blank">FirPE</a><div class="res-desc">现代化PE维护系统</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-keeCh?notoken=1"     target="_blank">优启通</a><div class="res-desc">IT天空出品PE工具</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-fxiCh?notoken=1"     target="_blank">HotPE</a><div class="res-desc">模块化PE维护系统</div></div> 
+                    </div> 
+                </div> 
  
-                <div class="res-group">
-                    <h3>🚀 Windows精简优化工具（2026年6月26日更新）</h3>
-                    <div class="res-grid">
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-NpzCh?notoken=1"    target="_blank">Atlas修改工具 2024版</a><div class="res-desc">AtlasOS修改 | 版本v0.3.2</div></div>
-                        <div class="res-item"><a href="https://wwpl.lanzouw.com/ibYmc2p8rk1e"    target="_blank">Atlas修改工具 2025版</a><div class="res-desc">AtlasOS修改 | 版本v0.4.1【提取码：NTFS】</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-OpzCh?notoken=1"    target="_blank">Atlas修改工具 2025最新版</a><div class="res-desc">AtlasOS修改 | 版本v0.5.0</div></div>
-                        <div class="res-item"><a href="https://www.lanzouw.com/iyOME21gxwuf"    target="_blank">BoosterX优化工具 2024版</a><div class="res-desc">FPS助推器【提取码：NTFS】</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-yYeCh?notoken=1"    target="_blank">BoosterX优化工具 2025版</a><div class="res-desc">FPS助推器 新版【提取码：NTFS】</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-AnzCh?notoken=1"    target="_blank">ZyperWin++</a><div class="res-desc">系统优化工具 | 版本v3.11</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-265Oh?notoken=1"    target="_blank">ZyperWin++</a><div class="res-desc">系统优化工具 最新版 | 版本v4.1</div></div>
-                    </div>
-                </div>
+                <div class="res-group"> 
+                    <h3>🚀 Windows精简优化工具（2026年6月26日更新）</h3> 
+                    <div class="res-grid"> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-NpzCh?notoken=1"     target="_blank">Atlas修改工具 2024版</a><div class="res-desc">AtlasOS修改 | 版本v0.3.2</div></div> 
+                        <div class="res-item"><a href="https://wwpl.lanzouw.com/ibYmc2p8rk1e"     target="_blank">Atlas修改工具 2025版</a><div class="res-desc">AtlasOS修改 | 版本v0.4.1【提取码：NTFS】</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-OpzCh?notoken=1"     target="_blank">Atlas修改工具 2025最新版</a><div class="res-desc">AtlasOS修改 | 版本v0.5.0</div></div> 
+                        <div class="res-item"><a href="https://www.lanzouw.com/iyOME21gxwuf"     target="_blank">BoosterX优化工具 2024版</a><div class="res-desc">FPS助推器【提取码：NTFS】</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-yYeCh?notoken=1"     target="_blank">BoosterX优化工具 2025版</a><div class="res-desc">FPS助推器 新版【提取码：NTFS】</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-AnzCh?notoken=1"     target="_blank">ZyperWin++</a><div class="res-desc">系统优化工具 | 版本v3.11</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-265Oh?notoken=1"     target="_blank">ZyperWin++</a><div class="res-desc">系统优化工具 最新版 | 版本v4.1</div></div> 
+                    </div> 
+                </div> 
  
-                <div class="res-group">
-                    <h3>💻 软件开发平台（2025年8月8日更新）</h3>
-                    <div class="res-grid">
-                        <div class="res-item"><a href="https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=community&channel=Release&version=VS2022&source=VSLandingPage&cid=2030:80b381785eb84887a410f591c4e8bf2a"    target="_blank">Visual Studio 2022</a><div class="res-desc">微软集成开发环境</div></div>
-                        <div class="res-item"><a href="https://developer.huawei.com/consumer/cn/deveco-studio/"    target="_blank">DevEco Studio</a><div class="res-desc">鸿蒙开发工具</div></div>
-                    </div>
-                </div>
+                <div class="res-group"> 
+                    <h3>💻 软件开发平台（2025年8月8日更新）</h3> 
+                    <div class="res-grid"> 
+                        <div class="res-item"><a href="https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=community&channel=Release&version=VS2022&source=VSLandingPage&cid=2030:80b381785eb84887a410f591c4e8bf2a"     target="_blank">Visual Studio 2022</a><div class="res-desc">微软集成开发环境</div></div> 
+                        <div class="res-item"><a href="https://developer.huawei.com/consumer/cn/deveco-studio/"     target="_blank">DevEco Studio</a><div class="res-desc">鸿蒙开发工具</div></div> 
+                    </div> 
+                </div> 
  
-                <div class="res-group">
-                    <h3>🎨 Windows美化类（2025年7月5日更新）</h3>
-                    <div class="res-grid">
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-xZtCh?notoken=1"    target="_blank">天选姬桌宠</a><div class="res-desc">桌面互动桌宠</div></div>
-                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-peeCh?notoken=1"    target="_blank">MyDockFinder</a><div class="res-desc">仿Mac Dock栏美化工具</div></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                <div class="res-group"> 
+                    <h3>🎨 Windows美化类（2025年7月5日更新）</h3> 
+                    <div class="res-grid"> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-xZtCh?notoken=1"     target="_blank">天选姬桌宠</a><div class="res-desc">桌面互动桌宠</div></div> 
+                        <div class="res-item"><a href="https://1816518115.share.123pan.cn/123pan/fIqqVv-peeCh?notoken=1"     target="_blank">MyDockFinder</a><div class="res-desc">仿Mac Dock栏美化工具</div></div> 
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
  
-        <!-- 第5页：服务与支持 -->
-        <div class="page" id="support">
-            <div class="banner">
-                <h1>服务与支持</h1>
-                <p>联系方式与服务收费说明</p>
-            </div>
+        <!-- 第5页：服务与支持 --> 
+        <div class="page" id="support"> 
+            <div class="banner"> 
+                <h1>服务与支持</h1> 
+                <p>联系方式与服务收费说明</p> 
+            </div> 
  
-            <div class="card">
-                <div class="card-title">联系方式</div>
-                <ul class="list">
-                    <li>微信公众号：家伟说电脑（服务与支持）</li>
-                </ul>
-            </div>
+            <div class="card"> 
+                <div class="card-title">联系方式</div> 
+                <ul class="list"> 
+                    <li>微信公众号：家伟说电脑（服务与支持）</li> 
+                </ul> 
+            </div> 
  
-            <div class="card">
-                <div class="card-title">重装系统服务 收费标准</div>
-                <table class="price-table">
-                    <thead>
-                        <tr><th>服务类型</th><th>收费说明</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Windows原版系统重装</td><td>0元/次</td></tr>
-                        <tr><td>联想、小米、GPD游戏掌机原厂镜像</td><td>镜像免费，收取10元/次远程费</td></tr>
-                        <tr><td>华为原厂系统</td><td>40~180元/次，不收远程费</td></tr>
-                        <tr><td>华硕原厂系统</td><td>10~80元/次，不收远程费</td></tr>
-                        <tr><td>其他品牌原厂系统</td><td>45元/次，不收远程费</td></tr>
-                    </tbody>
-                </table>
-            </div>
+            <div class="card"> 
+                <div class="card-title">重装系统服务 收费标准</div> 
+                <table class="price-table"> 
+                    <thead> 
+                        <tr><th>服务类型</th><th>收费说明</th></tr> 
+                    </thead> 
+                    <tbody> 
+                        <tr><td>Windows原版系统重装</td><td>0元/次</td></tr> 
+                        <tr><td>联想、小米、GPD游戏掌机原厂镜像</td><td>镜像免费，收取10元/次远程费</td></tr> 
+                        <tr><td>华为原厂系统</td><td>40~180元/次，不收远程费</td></tr> 
+                        <tr><td>华硕原厂系统</td><td>10~80元/次，不收远程费</td></tr> 
+                        <tr><td>其他品牌原厂系统</td><td>45元/次，不收远程费</td></tr> 
+                    </tbody> 
+                </table> 
+            </div> 
  
-            <div class="card">
-                <div class="card-title">解决电脑问题服务 收费标准</div>
-                <ul class="list">
-                    <li>Windows电脑问题解决方案：安装软件、C++运行库、软件更新重装、系统设置问题、升级系统问题等</li>
-                    <li>收费标准：0元/次</li>
-                </ul>
-            </div>
+            <div class="card"> 
+                <div class="card-title">解决电脑问题服务 收费标准</div> 
+                <ul class="list"> 
+                    <li>Windows电脑问题解决方案：安装软件、C++运行库、软件更新重装、系统设置问题、升级系统问题等</li> 
+                    <li>收费标准：0元/次</li> 
+                </ul> 
+            </div> 
  
-            <div class="card">
-                <div class="card-title">服务支持伙伴</div>
-                <p style="color: #64748b; margin-bottom: 8px;">如果我不在线，可联系以下伙伴为您提供服务与支持：</p>
-                <div class="partner-grid">
-                    <div class="res-item"><a href="https://ahong.mysxl.cn/"    target="_blank">阿宏搞数码（旧）</a></div>
-		    <div class="res-item"><a href="https://ahong.wiki/"    target="_blank">阿宏搞数码（新）</a></div>
-                    <div class="res-item"><a href="https://matonggaishuodiannao.mysxl.cn/"    target="_blank">马桶盖说电脑</a></div>
-                    <div class="res-item"><a href="https://cljxsymy.mysxl.cn/">   除了镜像啥也没有</a></div>
-                    <div class="res-item"><a href="https://aztdndxg.mysxl.cn/"    target="_blank">爱折腾电脑的小刚</a></div>
-                    <div class="res-item"><a href="https://moyuanxuezhang.mysxl.cn/"    target="_blank">墨渊学长</a></div>
-                    <div class="res-item"><a href="https://dsdngzs.mysxl.cn/"    target="_blank">DS电脑工作室</a></div>
-                    <div class="res-item"><a href="https://xikexinxi.mysxl.cn/"    target="_blank">汐科信息工作室</a></div>
-                    <div class="res-item"><a href="https://shehuikaistudio.mysxl.cn/"    target="_blank">社会楷Studio官方网站</a></div>
-                    <div class="res-item"><a href="https://windngzs.mysxl.cn/"    target="_blank">Windows电脑工作室官网</a></div>
-                    <div class="res-item"><a href="https://win11shuodiannao.mysxl.cn/"    target="_blank">win11说电脑官网</a></div>
-                    <div class="res-item"><a href="https://sgdngzs.mysxl.cn/"    target="_blank">SG电脑工作室官网</a></div>
-                    <div class="res-item"><a href="https://xccb.mysxl.cn/"    target="_blank">辰宝——阿宏助理</a></div>
-                    <div class="res-item"><a href="https://linxvanshuodiannao.mysxl.cn/"    target="_blank">林轩说电脑</a></div>
-                </div>
-            </div>
-        </div>
+            <div class="card"> 
+                <div class="card-title">服务支持伙伴</div> 
+                <p style="color: #64748b; margin-bottom: 8px;">如果我不在线，可联系以下伙伴为您提供服务与支持：</p> 
+                <div class="partner-grid"> 
+                    <div class="res-item"><a href="https://ahong.mysxl.cn/"     target="_blank">阿宏搞数码（旧）</a></div> 
+		    <div class="res-item"><a href="https://ahong.wiki/"     target="_blank">阿宏搞数码（新）</a></div> 
+                    <div class="res-item"><a href="https://matonggaishuodiannao.mysxl.cn/"     target="_blank">马桶盖说电脑</a></div> 
+                    <div class="res-item"><a href="https://cljxsymy.mysxl.cn/">    除了镜像啥也没有</a></div> 
+                    <div class="res-item"><a href="https://aztdndxg.mysxl.cn/"     target="_blank">爱折腾电脑的小刚</a></div> 
+                    <div class="res-item"><a href="https://moyuanxuezhang.mysxl.cn/"     target="_blank">墨渊学长</a></div> 
+                    <div class="res-item"><a href="https://dsdngzs.mysxl.cn/"     target="_blank">DS电脑工作室</a></div> 
+                    <div class="res-item"><a href="https://xikexinxi.mysxl.cn/"     target="_blank">汐科信息工作室</a></div> 
+                    <div class="res-item"><a href="https://shehuikaistudio.mysxl.cn/"     target="_blank">社会楷Studio官方网站</a></div> 
+                    <div class="res-item"><a href="https://windngzs.mysxl.cn/"     target="_blank">Windows电脑工作室官网</a></div> 
+                    <div class="res-item"><a href="https://win11shuodiannao.mysxl.cn/"     target="_blank">win11说电脑官网</a></div> 
+                    <div class="res-item"><a href="https://sgdngzs.mysxl.cn/"     target="_blank">SG电脑工作室官网</a></div> 
+                    <div class="res-item"><a href="https://xccb.mysxl.cn/"     target="_blank">辰宝——阿宏助理</a></div> 
+                    <div class="res-item"><a href="https://lxsdn.mysxl.cn/"     target="_blank">林轩说电脑</a></div> 
+                </div> 
+            </div> 
+        </div> 
  
-        <!-- 第6页：综合入口 -->
-        <div class="page" id="portal">
-            <div class="banner">
-                <h1>🔗 综合入口</h1>
-                <p>各个申请入口 · 享受良好的服务</p>
-            </div>
- 
-            <!-- 板块一：举报反馈 -->
-            <div class="portal-card" style="border-left: 5px solid #ef4444;">
-                <div class="portal-card-header">
-                    <div class="portal-card-icon red">🚨</div>
-                    <div>
-                        <div class="portal-card-title">举报反馈</div>
-                        <div class="portal-card-subtitle">发现违规行为？请通过下方链接提交举报，我们将尽快处理</div>
-                    </div>
-                </div>
-                <p style="color: #64748b; font-size: 14px; margin-bottom: 14px; line-height: 1.6;">
-                    如发现造谣、辱骂、盗用视频、冒充账号等违规行为，请点击下方按钮进入举报页面，提交相关证据。我们会在核实后按<strong>处罚条例</strong>进行处理。
-                </p>
-                <div class="portal-btn-row">
-                    <a href="https://dm0bju9t.jsjform.com/f/spM149"   target="_blank" class="portal-link-btn red-btn">
-                        📝 立即举报 <span class="arrow-icon">→</span>
-                    </a>
-                </div>
-                <div class="submit-notice">
-                    <span class="notice-icon">📬</span>
-                    <div class="notice-content">
-                        <strong>提交须知：</strong>审核结果将会以邮件方式发送至您的个人邮箱。请务必填写<strong>正确的邮箱地址</strong>，否则将无法收到结果通知。审核预计需要<strong>1~7个工作日</strong>，请耐心等待。
-                    </div>
-                </div>
-            </div>
- 
-            <!-- 板块二：视频共创 -->
-            <div class="portal-card" style="border-left: 5px solid #3b82f6;">
-                <div class="portal-card-header">
-                    <div class="portal-card-icon blue">🎬</div>
-                    <div>
-                        <div class="portal-card-title">视频共创</div>
-                        <div class="portal-card-subtitle">参与视频共创计划，B站 & 抖音双平台可选</div>
-                    </div>
-                </div>
-                <p style="color: #64748b; font-size: 14px; margin-bottom: 14px; line-height: 1.6;">
-                    诚邀您参与<strong>家伟说电脑</strong>视频共创计划！选择下方平台提交共创申请，一起打造优质电脑内容。请确保已阅读并同意共创规则。
-                </p>
-                <div class="portal-btn-row">
-                    <a href="https://dm0bju9t.jsjform.com/f/IkFDUr"   target="_blank" class="portal-link-btn pink-btn">
-                        📺 B站共创 <span class="arrow-icon">→</span>
-                    </a>
-                    <a href="https://dm0bju9t.jsjform.com/f/vXFvtP"   target="_blank" class="portal-link-btn blue-btn">
-                        🎵 抖音共创 <span class="arrow-icon">→</span>
-                    </a>
-                </div>
-                <div class="submit-notice">
-                    <span class="notice-icon">📬</span>
-                    <div class="notice-content">
-                        <strong>提交须知：</strong>共创审核结果将会以邮件方式发送至您的个人邮箱。请务必填写<strong>正确的邮箱地址</strong>，否则将无法收到结果通知。审核预计需要<strong>1~7个工作日</strong>，请耐心等待。
-                    </div>
-                </div>
-            </div>
- 
-            <!-- 板块三：减轻处罚申诉 -->
-            <div class="portal-card" style="border-left: 5px solid #f97316;">
-                <div class="portal-card-header">
-                    <div class="portal-card-icon orange">📋</div>
-                    <div>
-                        <div class="portal-card-title">减轻处罚申诉</div>
-                        <div class="portal-card-subtitle">如您认为处罚过重或有改过表现，可在此提交减轻处罚申诉</div>
-                    </div>
-                </div>
-                <p style="color: #64748b; font-size: 14px; margin-bottom: 14px; line-height: 1.6;">
-                    如果您已认识到错误并有良好表现，可以通过下方链接提交<strong>减轻处罚申诉</strong>。请如实填写申诉理由和改过说明，我们会在审核后根据实际情况调整处罚力度。
-                </p>
-                <div class="tip-box tip-yellow" style="margin-bottom: 14px;">
-                    <strong>⚠️ 注意：</strong>申诉不代表一定会减轻处罚，最终结果以审核为准。虚假申诉将可能加重处罚。
-                </div>
-                <div class="portal-btn-row">
-                    <a href="https://dm0bju9t.jsjform.com/f/iIfSYF"   target="_blank" class="portal-link-btn orange-btn">
-                        📤 提交申诉 <span class="arrow-icon">→</span>
-                    </a>
-                </div>
-                <div class="submit-notice warning">
-                    <span class="notice-icon">📬</span>
-                    <div class="notice-content">
-                        <strong>提交须知：</strong>申诉审核结果将会以邮件方式发送至您的个人邮箱。请务必填写<strong>正确的邮箱地址</strong>，否则将无法收到申诉结果。审核预计需要<strong>1~7个工作日</strong>，请耐心等待。如有补充证据，请在申诉表单中一并提交。
-                    </div>
-                </div>
-            </div>
- 
-            <!-- ★★★ 新增板块四：服务支持伙伴申请 ★★★ -->
-            <div class="portal-card" style="border-left: 5px solid #10b981;">
-                <div class="portal-card-header">
-                    <div class="portal-card-icon blue">🤝</div>
-                    <div>
-                        <div class="portal-card-title">服务支持伙伴申请</div>
-                        <div class="portal-card-subtitle">加入服务支持伙伴行列，共同为用户提供优质服务</div>
-                    </div>
-                </div>
-                <p style="color: #64748b; font-size: 14px; margin-bottom: 14px; line-height: 1.6;">
-                    如果您有意向成为家伟说电脑的服务支持伙伴，为用户提供电脑相关服务与支持，请点击下方按钮提交申请。我们会在审核后与您联系。
-                </p>
-                <div class="portal-btn-row">
-                    <!-- ⚠️ 请将下方链接替换为你自己的服务支持伙伴申请表单链接 -->
-                    <a href="https://dm0bju9t.jsjform.com/f/Tfy9mX"  target="_blank" class="portal-link-btn blue-btn">
-                        📝 立即申请 <span class="arrow-icon">→</span>
-                    </a>
-                </div>
-                <div class="submit-notice warning">
-                    <span class="notice-icon">📬</span>
-                    <div class="notice-content">
-                        <strong>提交须知：</strong>申请审核结果将会以邮件方式发送至您的个人邮箱。请务必填写<strong>正确的邮箱地址</strong>，否则将无法收到结果通知。审核预计需要<strong>1~7个工作日</strong>，请耐心等待。
-                    </div>
-                </div>
-            </div>
- 
-        </div>
- 
-     <footer>
-   Copyright  © 2026 家伟说电脑 版权所有<br>
+     <footer> 
+   Copyright  © 2026 家伟说电脑 版权所有<br> 
     Powered by © 家伟说电脑-Ai 😁耶～GitHub.com 
-	</footer>
-    </div>
+	</footer> 
+    </div> 
  
-    <script>
+    <script> 
         // 页面切换 
-        const navItems = document.querySelectorAll('.nav-item');
-        const pages = document.querySelectorAll('.page');
+        const navItems = document.querySelectorAll('.nav-item'); 
+        const pages = document.querySelectorAll('.page'); 
  
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const pageId = item.dataset.page;
+        navItems.forEach(item => { 
+            item.addEventListener('click', () => { 
+                const pageId = item.dataset.page; 
  
                 // 切换导航高亮 
-                navItems.forEach(i => i.classList.remove('active'));
-                item.classList.add('active');
+                navItems.forEach(i => i.classList.remove('active')); 
+                item.classList.add('active'); 
  
                 // 切换页面 
-                pages.forEach(p => p.classList.remove('active'));
-                document.getElementById(pageId).classList.add('active');
+                pages.forEach(p => p.classList.remove('active')); 
+                document.getElementById(pageId).classList.add('active'); 
  
                 // 滚动到顶部 
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        });
+                window.scrollTo({ top: 0, behavior: 'smooth' }); 
+            }); 
+        }); 
  
         // 公告弹窗控制 
-        function openNotice() {
-            document.getElementById('noticeModal').classList.add('show');
-        }
+        function openNotice() { 
+            document.getElementById('noticeModal').classList.add('show'); 
+        } 
  
-        function closeNotice() {
-            document.getElementById('noticeModal').classList.remove('show');
-        }
+        function closeNotice() { 
+            document.getElementById('noticeModal').classList.remove('show'); 
+        } 
  
         // 点击遮罩关闭弹窗 
-        document.getElementById('noticeModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeNotice();
-            }
-        });
+        document.getElementById('noticeModal').addEventListener('click', function(e) { 
+            if (e.target === this) { 
+                closeNotice(); 
+            } 
+        }); 
  
         // 进入页面自动弹出公告 
-        window.onload = function() {
-            setTimeout(() => {
-                openNotice();
-            }, 600);
-        };
-    </script>
+        window.onload = function() { 
+            setTimeout(() => { 
+                openNotice(); 
+            }, 600); 
+        }; 
+    </script> 
  
-</body>
-</html>
+</body> 
+</html> 
